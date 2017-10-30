@@ -1,24 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ABp-tD-Ppv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Your Timelines-->
+        <scene sceneID="eAt-4G-uy7">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="ujb-46-qbg" customClass="AllTimelinesViewController" customModule="GoalsTimelineApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YGQ-08-JeV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ygi-h1-vEs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="533"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ygi-h1-vEs" secondAttribute="height" multiplier="375:533" id="jmj-CT-I2X"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="timelineCell" id="AYH-9f-wTA">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AYH-9f-wTA" id="nZs-vK-TgG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDy-uk-Kv5">
+                                <rect key="frame" x="16" y="612" width="343" height="35"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pDy-uk-Kv5" secondAttribute="height" multiplier="49:5" id="gKg-lN-TRK"/>
+                                </constraints>
+                                <state key="normal" title="Add Timeline">
+                                    <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Bpo-8v-c0c" kind="show" identifier="allTimelinesToNew" id="hUU-jc-fMI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pDy-uk-Kv5" firstAttribute="centerX" secondItem="ygi-h1-vEs" secondAttribute="centerX" id="2Yl-ix-psy"/>
+                            <constraint firstItem="ygi-h1-vEs" firstAttribute="width" secondItem="YGQ-08-JeV" secondAttribute="width" id="4G4-EC-plz"/>
+                            <constraint firstItem="ygi-h1-vEs" firstAttribute="centerX" secondItem="PhF-94-TZ6" secondAttribute="centerX" id="5sK-6x-yt1"/>
+                            <constraint firstItem="pDy-uk-Kv5" firstAttribute="top" secondItem="ygi-h1-vEs" secondAttribute="bottom" constant="15" id="A4n-5s-KKO"/>
+                            <constraint firstItem="PhF-94-TZ6" firstAttribute="bottom" secondItem="pDy-uk-Kv5" secondAttribute="bottom" constant="20" id="EOi-YH-H49"/>
+                            <constraint firstItem="PhF-94-TZ6" firstAttribute="trailing" secondItem="pDy-uk-Kv5" secondAttribute="trailing" constant="16" id="EUJ-2M-lvW"/>
+                            <constraint firstItem="ygi-h1-vEs" firstAttribute="top" secondItem="PhF-94-TZ6" secondAttribute="top" id="dl8-IP-v3c"/>
+                            <constraint firstItem="pDy-uk-Kv5" firstAttribute="leading" secondItem="PhF-94-TZ6" secondAttribute="leading" constant="16" id="qZf-9J-kdx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PhF-94-TZ6"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Your Timelines" id="mxf-uL-2AN"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9wa-LM-ZTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1420" y="-39.130434782608695"/>
+        </scene>
+        <!--NewTimelineStoryboard-->
+        <scene sceneID="SP3-Hk-bKC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="NewTimelineStoryboard" id="Bpo-8v-c0c" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hsu-6U-bBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1999" y="-44"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NhG-gQ-a73">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ABp-tD-Ppv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nzA-Px-9Oy">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ujb-46-qbg" kind="relationship" relationship="rootViewController" id="9sl-lb-G0k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jCI-QA-CmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711" y="-48"/>
         </scene>
     </scenes>
 </document>
