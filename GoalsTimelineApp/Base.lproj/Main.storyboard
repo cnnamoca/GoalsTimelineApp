@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1k0-8r-h4S">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="v8R-58-hSr">
                                     <size key="itemSize" width="300" height="100"/>
@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="timelineCell" id="0Ub-Zk-bBt" customClass="TimelineCollectionViewCell" customModule="GoalsTimelineApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="timelineCell" id="0Ub-Zk-bBt" customClass="TimelineCollectionViewCell" customModule="GoalsTimelineApp" customModuleProvider="target">
                                         <rect key="frame" x="37.5" y="0.0" width="300" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -41,7 +41,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIT-L6-UWG">
-                                                    <rect key="frame" x="20" y="73" width="280" height="20.5"/>
+                                                    <rect key="frame" x="20" y="73" width="280" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -69,13 +69,22 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="YlZ-ba-pof"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOAL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhJ-1I-QoV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="84"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1k0-8r-h4S" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3Mi-Ad-d7I"/>
-                            <constraint firstItem="1k0-8r-h4S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5rW-Ea-Ehi"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1k0-8r-h4S" secondAttribute="bottom" id="66Q-8V-slS"/>
-                            <constraint firstItem="1k0-8r-h4S" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Cel-hu-kxL"/>
+                            <constraint firstItem="rhJ-1I-QoV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GBL-rM-jhy"/>
+                            <constraint firstItem="rhJ-1I-QoV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HgZ-mR-7Cm"/>
+                            <constraint firstItem="1k0-8r-h4S" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="LJz-7F-VQ2"/>
+                            <constraint firstItem="rhJ-1I-QoV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WCa-kt-m7c"/>
+                            <constraint firstItem="1k0-8r-h4S" firstAttribute="top" secondItem="rhJ-1I-QoV" secondAttribute="bottom" id="ec1-Ts-i3g"/>
+                            <constraint firstItem="1k0-8r-h4S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uxd-3a-Jp4"/>
+                            <constraint firstItem="1k0-8r-h4S" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yAx-vV-GDG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
