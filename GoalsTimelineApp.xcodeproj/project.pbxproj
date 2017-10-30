@@ -13,6 +13,7 @@
 		E63576B91FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E63576B71FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld */; };
 		E63576BB1FA7C7EB006CABDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E63576BA1FA7C7EB006CABDA /* Assets.xcassets */; };
 		E63576BE1FA7C7EB006CABDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63576BC1FA7C7EB006CABDA /* LaunchScreen.storyboard */; };
+		E63576C61FA7CC04006CABDA /* TimelineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63576C51FA7CC04006CABDA /* TimelineCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E63576BA1FA7C7EB006CABDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E63576BD1FA7C7EB006CABDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E63576BF1FA7C7EB006CABDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E63576C51FA7CC04006CABDA /* TimelineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 			children = (
 				E63576B01FA7C7EB006CABDA /* AppDelegate.swift */,
 				E63576B21FA7C7EB006CABDA /* ViewController.swift */,
-				E63576B41FA7C7EB006CABDA /* Main.storyboard */,
 				E63576BA1FA7C7EB006CABDA /* Assets.xcassets */,
+				E63576B41FA7C7EB006CABDA /* Main.storyboard */,
+				E63576C51FA7CC04006CABDA /* TimelineCollectionViewCell.swift */,
 				E63576BC1FA7C7EB006CABDA /* LaunchScreen.storyboard */,
 				E63576BF1FA7C7EB006CABDA /* Info.plist */,
 				E63576B71FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld */,
@@ -141,6 +144,7 @@
 			files = (
 				E63576B31FA7C7EB006CABDA /* ViewController.swift in Sources */,
 				E63576B91FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld in Sources */,
+				E63576C61FA7CC04006CABDA /* TimelineCollectionViewCell.swift in Sources */,
 				E63576B11FA7C7EB006CABDA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

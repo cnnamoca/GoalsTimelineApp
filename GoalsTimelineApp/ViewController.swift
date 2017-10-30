@@ -8,18 +8,71 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture(gesture:)))
+        self.collectionView.addGestureRecognizer(longPressGesture)
+
+    }
+    
+    @objc
+    func handleLongGesture(gesture: UILongPressGestureRecognizer){
+        switch (gesture.state){
+        case UIGestureRecognizerState.began:
+            guard
+                let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
+                else { break }
+            
+            let began = collectionView.beginInteractiveMovementForItem(at: indexPath)
+            print("began \(indexPath): \(began)")
+            break
+            
+        case UIGestureRecognizerState.changed:
+            print("changed")
+            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+            break
+            
+        case UIGestureRecognizerState.ended:
+            print("ended")
+            //update cell name
+            //update cell below/above as well
+            
+            self.collectionView.reloadData()
+            collectionView.endInteractiveMovement()
+            break
+            
+        default:
+            print("default")
+            collectionView.cancelInteractiveMovement()
+            break
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
+        cell.titleLabel.text = "\(indexPath.row)"
+        
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+//    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+//        print("can move")
+//        return true
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("move item \(sourceIndexPath) to \(destinationIndexPath)")
+        //update datasource
     }
-
-
 }
 
