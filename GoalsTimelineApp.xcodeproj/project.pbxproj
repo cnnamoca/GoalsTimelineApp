@@ -17,6 +17,9 @@
 		E63576B91FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E63576B71FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld */; };
 		E63576BB1FA7C7EB006CABDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E63576BA1FA7C7EB006CABDA /* Assets.xcassets */; };
 		E63576BE1FA7C7EB006CABDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63576BC1FA7C7EB006CABDA /* LaunchScreen.storyboard */; };
+		E63576CD1FA7F288006CABDA /* NewTimelineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63576CB1FA7F288006CABDA /* NewTimelineStoryboard.storyboard */; };
+		E63576CE1FA7F288006CABDA /* NewTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63576CC1FA7F288006CABDA /* NewTimelineViewController.swift */; };
+		E63576D01FA7F2B2006CABDA /* TimeLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63576CF1FA7F2B2006CABDA /* TimeLine.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		E63576BA1FA7C7EB006CABDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E63576BD1FA7C7EB006CABDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E63576BF1FA7C7EB006CABDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E63576CB1FA7F288006CABDA /* NewTimelineStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewTimelineStoryboard.storyboard; sourceTree = "<group>"; };
+		E63576CC1FA7F288006CABDA /* NewTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTimelineViewController.swift; sourceTree = "<group>"; };
+		E63576CF1FA7F2B2006CABDA /* TimeLine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeLine.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,9 @@
 				E63576B41FA7C7EB006CABDA /* Main.storyboard */,
 				E63576BA1FA7C7EB006CABDA /* Assets.xcassets */,
 				E63576BC1FA7C7EB006CABDA /* LaunchScreen.storyboard */,
+				E63576CB1FA7F288006CABDA /* NewTimelineStoryboard.storyboard */,
+				E63576CF1FA7F2B2006CABDA /* TimeLine.storyboard */,
+				E63576CC1FA7F288006CABDA /* NewTimelineViewController.swift */,
 				E63576BF1FA7C7EB006CABDA /* Info.plist */,
 				E63576B71FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld */,
 			);
@@ -139,7 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E63576BE1FA7C7EB006CABDA /* LaunchScreen.storyboard in Resources */,
+				E63576D01FA7F2B2006CABDA /* TimeLine.storyboard in Resources */,
 				E63576BB1FA7C7EB006CABDA /* Assets.xcassets in Resources */,
+				E63576CD1FA7F288006CABDA /* NewTimelineStoryboard.storyboard in Resources */,
 				E63576B61FA7C7EB006CABDA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +164,7 @@
 			files = (
 				E63576B31FA7C7EB006CABDA /* ViewController.swift in Sources */,
 				0D57D9E71FA7D24A00D674EF /* SteppingStone+CoreDataProperties.swift in Sources */,
+				E63576CE1FA7F288006CABDA /* NewTimelineViewController.swift in Sources */,
 				0D57D9E61FA7D24A00D674EF /* SteppingStone+CoreDataClass.swift in Sources */,
 				E63576B91FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld in Sources */,
 				0D57D9E41FA7D24A00D674EF /* Timeline+CoreDataClass.swift in Sources */,
