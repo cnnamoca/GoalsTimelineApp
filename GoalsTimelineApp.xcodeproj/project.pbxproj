@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D57D9E41FA7D24A00D674EF /* Timeline+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57D9E01FA7D24A00D674EF /* Timeline+CoreDataClass.swift */; };
+		0D57D9E51FA7D24A00D674EF /* Timeline+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57D9E11FA7D24A00D674EF /* Timeline+CoreDataProperties.swift */; };
+		0D57D9E61FA7D24A00D674EF /* SteppingStone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57D9E21FA7D24A00D674EF /* SteppingStone+CoreDataClass.swift */; };
+		0D57D9E71FA7D24A00D674EF /* SteppingStone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57D9E31FA7D24A00D674EF /* SteppingStone+CoreDataProperties.swift */; };
 		E63576B11FA7C7EB006CABDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63576B01FA7C7EB006CABDA /* AppDelegate.swift */; };
 		E63576B31FA7C7EB006CABDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63576B21FA7C7EB006CABDA /* ViewController.swift */; };
 		E63576B61FA7C7EB006CABDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63576B41FA7C7EB006CABDA /* Main.storyboard */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D57D9E01FA7D24A00D674EF /* Timeline+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timeline+CoreDataClass.swift"; path = "GoalsTimelineApp/Timeline+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0D57D9E11FA7D24A00D674EF /* Timeline+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timeline+CoreDataProperties.swift"; path = "GoalsTimelineApp/Timeline+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0D57D9E21FA7D24A00D674EF /* SteppingStone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SteppingStone+CoreDataClass.swift"; path = "GoalsTimelineApp/SteppingStone+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0D57D9E31FA7D24A00D674EF /* SteppingStone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SteppingStone+CoreDataProperties.swift"; path = "GoalsTimelineApp/SteppingStone+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E63576AD1FA7C7EB006CABDA /* GoalsTimelineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalsTimelineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E63576B01FA7C7EB006CABDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E63576B21FA7C7EB006CABDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +48,10 @@
 		E63576A41FA7C7EB006CABDA = {
 			isa = PBXGroup;
 			children = (
+				0D57D9E01FA7D24A00D674EF /* Timeline+CoreDataClass.swift */,
+				0D57D9E11FA7D24A00D674EF /* Timeline+CoreDataProperties.swift */,
+				0D57D9E21FA7D24A00D674EF /* SteppingStone+CoreDataClass.swift */,
+				0D57D9E31FA7D24A00D674EF /* SteppingStone+CoreDataProperties.swift */,
 				E63576AF1FA7C7EB006CABDA /* GoalsTimelineApp */,
 				E63576AE1FA7C7EB006CABDA /* Products */,
 			);
@@ -140,7 +152,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E63576B31FA7C7EB006CABDA /* ViewController.swift in Sources */,
+				0D57D9E71FA7D24A00D674EF /* SteppingStone+CoreDataProperties.swift in Sources */,
+				0D57D9E61FA7D24A00D674EF /* SteppingStone+CoreDataClass.swift in Sources */,
 				E63576B91FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld in Sources */,
+				0D57D9E41FA7D24A00D674EF /* Timeline+CoreDataClass.swift in Sources */,
+				0D57D9E51FA7D24A00D674EF /* Timeline+CoreDataProperties.swift in Sources */,
 				E63576B11FA7C7EB006CABDA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
