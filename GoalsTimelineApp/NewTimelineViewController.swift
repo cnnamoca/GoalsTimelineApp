@@ -9,6 +9,11 @@
 import UIKit
 
 class NewTimelineViewController: UIViewController {
+    @IBOutlet weak var newTimelineTitleView: UITextField!
+    @IBOutlet weak var newTimelineNotesView: UITextField!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
+    @IBOutlet weak var endDatePicker: UIDatePicker!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,11 +21,14 @@ class NewTimelineViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  
+    @IBAction func addNewTimeline(_ sender: Any) {
+    }
 
     /*
     // MARK: - Navigation
