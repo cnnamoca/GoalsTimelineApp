@@ -46,6 +46,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addNewTimeline:" destination="zxG-lS-hFM" eventType="touchUpInside" id="y8A-co-8qG"/>
+                                    <segue destination="XqW-lf-eru" kind="show" id="cgf-F7-3rI"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Timeline Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sLg-9p-zSp">
@@ -123,6 +124,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YAF-1q-ZoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="521.73913043478262" y="178.53260869565219"/>
+        </scene>
+        <!--TimeLine-->
+        <scene sceneID="mtH-RZ-g8r">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TimeLine" id="XqW-lf-eru" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="unC-S7-ubx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1087" y="241"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0GY-YT-6ek">
