@@ -10,17 +10,18 @@ import UIKit
 import CoreData
 
 class TimelineViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+    @IBOutlet weak var timelineTitleLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
     var timelineArray : Array<Timeline> = Array()
-    var timelineDummyID : Int = Int()
+    var timeline : Timeline = Timeline ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture(gesture:)))
         self.collectionView.addGestureRecognizer(longPressGesture)
-        
+        timelineTitleLabel.text = timeline.title
     }
     
     override func viewWillAppear(_ animated: Bool) {
