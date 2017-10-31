@@ -10,6 +10,10 @@ import UIKit
 
 class AddSteppingStoneViewController: UIViewController {
 
+    @IBOutlet weak var steppingStoneTitle: UITextField!
+    @IBOutlet weak var steppingStoneNotes: UITextView!
+    @IBOutlet weak var steppingStoneDueDatePicker: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +25,8 @@ class AddSteppingStoneViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBOutlet weak var addNewSteppingStone: UIButton!
+    
     /*
     // MARK: - Navigation
 
