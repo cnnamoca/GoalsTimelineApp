@@ -18,7 +18,6 @@
 		0DEFC0F11FA8143400C3363B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E63576BF1FA7C7EB006CABDA /* Info.plist */; };
 		0DEFC0F31FA8153400C3363B /* TimeLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DEFC0F21FA8151E00C3363B /* TimeLine.storyboard */; };
 		E63576B11FA7C7EB006CABDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63576B01FA7C7EB006CABDA /* AppDelegate.swift */; };
-		E63576B31FA7C7EB006CABDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63576B21FA7C7EB006CABDA /* ViewController.swift */; };
 		E63576B61FA7C7EB006CABDA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63576B41FA7C7EB006CABDA /* Main.storyboard */; };
 		E63576B91FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E63576B71FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld */; };
 		E63576BB1FA7C7EB006CABDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E63576BA1FA7C7EB006CABDA /* Assets.xcassets */; };
@@ -39,7 +38,6 @@
 		0DEFC0F21FA8151E00C3363B /* TimeLine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeLine.storyboard; sourceTree = "<group>"; };
 		E63576AD1FA7C7EB006CABDA /* GoalsTimelineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalsTimelineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E63576B01FA7C7EB006CABDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E63576B21FA7C7EB006CABDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E63576B51FA7C7EB006CABDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E63576B81FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoalsTimelineApp.xcdatamodel; sourceTree = "<group>"; };
 		E63576BA1FA7C7EB006CABDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 				0DEFC0ED1FA8135B00C3363B /* TimelineCollectionViewCell.swift */,
 				0D57D9E91FA7F4CD00D674EF /* NewTimelineViewController.swift */,
 				E63576B01FA7C7EB006CABDA /* AppDelegate.swift */,
-				E63576B21FA7C7EB006CABDA /* ViewController.swift */,
 				E63576B41FA7C7EB006CABDA /* Main.storyboard */,
 				0D57D9E81FA7F4CD00D674EF /* AllTimelinesViewController.swift */,
 				E63576BA1FA7C7EB006CABDA /* Assets.xcassets */,
@@ -183,7 +180,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E63576B31FA7C7EB006CABDA /* ViewController.swift in Sources */,
 				0DEFC0EA1FA8113700C3363B /* SteppingStone+CoreDataClass.swift in Sources */,
 				0DEFC0E91FA8113700C3363B /* SteppingStone+CoreDataProperties.swift in Sources */,
 				0D57D9EC1FA7F4CE00D674EF /* NewTimelineViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController {
+class TimelineViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -71,6 +71,10 @@ class TimelineViewController: UIViewController {
     //        print("can move")
     //        return true
     //    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print("move item \(sourceIndexPath) to \(destinationIndexPath)")

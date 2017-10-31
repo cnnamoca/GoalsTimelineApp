@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewTimelineViewController: UIViewController {
     @IBOutlet weak var newTimelineTitleView: UITextField!
@@ -20,16 +21,24 @@ class NewTimelineViewController: UIViewController {
         super.viewDidLoad()
         self.setupTextfieldsView()
 
-        // Do any additional setup after loading the view.
-    }
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
   
     @IBAction func addNewTimeline(_ sender: Any) {
+        
+        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        
+        let newTimeline : Timeline = Timeline(context: persistentContainer.viewContext)
+        newTimeline.title = newTimelineTitleView.text
+        newTimeline.info = newTimelineNotesView.text
+        newTimeline.startDate = startDatePicker.date as NSDate
+        newTimeline.endDate = endDatePicker.date as NSDate
+        newTimeline.isCompleted = false
+        
+        appDelegate.saveContext()
+        
+        
+        
     }
 
     //Set up "fake" placeholder in Note textView
@@ -38,14 +47,6 @@ class NewTimelineViewController: UIViewController {
         newTimelineNotesView.text = "Notes"
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
