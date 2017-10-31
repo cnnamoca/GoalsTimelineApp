@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NewTimelineViewController: UIViewController {
     @IBOutlet weak var newTimelineTitleView: UITextField!
@@ -23,6 +24,21 @@ class NewTimelineViewController: UIViewController {
     }
   
     @IBAction func addNewTimeline(_ sender: Any) {
+        
+        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        
+        let newTimeline : Timeline = Timeline(context: persistentContainer.viewContext)
+        newTimeline.title = newTimelineTitleView.text
+        newTimeline.info = newTimelineNotesView.text
+        newTimeline.startDate = startDatePicker.date as NSDate
+        newTimeline.endDate = endDatePicker.date as NSDate
+        newTimeline.isCompleted = false
+        
+        appDelegate.saveContext()
+        
+        
+        
     }
 
     //Set up "fake" placeholder in Note textView
