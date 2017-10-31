@@ -23,6 +23,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         self.collectionView.addGestureRecognizer(longPressGesture)
         timelineTitleLabel.text = timeline.title
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,14 +33,18 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         self.fetchTimelineData()
+        collectionView.reloadData()
         print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
 
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toAddSteppingStone" {
         let addSteppingStoneVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
         addSteppingStoneVC.timelineObject = timeline
+        }
 
     }
     
@@ -76,10 +81,16 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
+    // MARK: - Collection View Data Source
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
-        cell.titleLabel.text = "\(indexPath.row)"
+        var steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
         
+        steppingArray = steppingArray.sorted { $0.deadline?.compare($1.deadline! as Date) == .orderedAscending }
+        
+        cell.titleLabel.text = steppingArray[indexPath.row].title
+        cell.dateLabel.text = "\(steppingArray[indexPath.row].deadline)"
         
         return cell
     }
@@ -87,7 +98,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         //needs to be updated
-        return 5
+        return (timeline.steppingStones?.count)!
     }
     
     //    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
