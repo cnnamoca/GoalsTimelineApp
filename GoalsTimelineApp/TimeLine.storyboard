@@ -117,7 +117,7 @@
                                 <state key="normal" backgroundImage="AddButton"/>
                                 <connections>
                                     <action selector="addButton:" destination="EQI-Od-2co" eventType="touchUpInside" id="KGb-er-4dE"/>
-                                    <segue destination="2cr-6C-val" kind="show" identifier="toAddSteppingStone" id="HEY-s7-KUs"/>
+                                    <segue destination="2cr-6C-val" kind="presentation" identifier="toAddSteppingStone" id="HEY-s7-KUs"/>
                                 </connections>
                             </button>
                         </subviews>

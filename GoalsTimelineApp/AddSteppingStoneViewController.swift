@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import CoreData
+
+protocol SteppingStoneDelegate {
+    func addSteppingStone()
+}
 
 class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var steppingStoneTitle: UITextField!
     @IBOutlet weak var steppingStoneNotes: UITextView!
     @IBOutlet weak var steppingStoneDueDatePicker: UIDatePicker!
+    var timelineObject : Timeline = Timeline ()
+    var delegate : SteppingStoneDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +36,29 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var addNewSteppingStone: UIButton!
+
+    @IBAction func addSteppingStoneClicked(_ sender: UIButton) {
+        
+        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        
+        let newSteppingStone : SteppingStone = SteppingStone(context: persistentContainer.viewContext)
+        newSteppingStone.title = steppingStoneTitle.text
+        newSteppingStone.info = steppingStoneNotes.text
+        newSteppingStone.deadline = steppingStoneDueDatePicker.date as NSDate
+        newSteppingStone.isCompleted = false
+        
+        timelineObject.addToSteppingStones(newSteppingStone)
+        
+        appDelegate.saveContext()
+        
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        <#code#>
+//    }
     
     
     // MARK: - Text Fields setup
@@ -38,6 +68,8 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
         steppingStoneNotes.delegate = self
         steppingStoneNotes.textColor = UIColor.lightGray
         steppingStoneNotes.text = "Notes"
+        
+        
     }
     
     //Remove "fake" placeholder when uset taps on textview
