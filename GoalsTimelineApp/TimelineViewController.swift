@@ -7,16 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
 class TimelineViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     @IBOutlet weak var collectionView: UICollectionView!
+    var timelineArray : Array<Timeline> = Array()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture(gesture:)))
         self.collectionView.addGestureRecognizer(longPressGesture)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.fetchTimeline()
         
     }
     
@@ -88,7 +96,19 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBAction func addButton(_ sender: Any) {
     }
     
-    
+    func fetchTimeline() {
+        
+        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        
+        let context : NSManagedObjectContext = persistentContainer.viewContext
+        let request : NSFetchRequest = Timeline.fetchRequest()
+        timelineArray = try! context.fetch(request)
+        print ("there are \(timelineArray.count) items in the array")
+        
+        
+        
+    }
     
     
 }
