@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Timeline View Controller-->
         <scene sceneID="y4Y-1U-QsD">
@@ -43,14 +48,14 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="3ti-ra-KAk"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gn7-nA-dSE">
                                                     <rect key="frame" x="58" y="20" width="222" height="38"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -92,8 +97,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNl-w5-qPU">
-                                <rect key="frame" x="16" y="43" width="117" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <rect key="frame" x="16" y="43" width="122.5" height="60"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -112,6 +117,7 @@
                                 <state key="normal" backgroundImage="AddButton"/>
                                 <connections>
                                     <action selector="addButton:" destination="EQI-Od-2co" eventType="touchUpInside" id="KGb-er-4dE"/>
+                                    <segue destination="2cr-6C-val" kind="show" identifier="toAddSteppingStone" id="HEY-s7-KUs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -143,6 +149,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znk-jx-zSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-797.60000000000002" y="-104.7976011994003"/>
+        </scene>
+        <!--AddSteppingStone-->
+        <scene sceneID="ak3-fE-7Oi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddSteppingStone" id="2cr-6C-val" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxe-3D-epb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-236" y="-52"/>
         </scene>
         <!--Main-->
         <scene sceneID="n2J-4O-7g4">
