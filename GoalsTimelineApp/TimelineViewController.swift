@@ -13,6 +13,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet weak var collectionView: UICollectionView!
     var timelineArray : Array<Timeline> = Array()
+    var timelineDummyID : Int = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
