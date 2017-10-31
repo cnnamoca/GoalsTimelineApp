@@ -43,6 +43,14 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
     
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath : IndexPath = timelineTableView.indexPathForSelectedRow {
+            let selectedRow = indexPath.row
+            let timelineVC : TimelineViewController = segue.destination as! TimelineViewController
+            timelineVC.timeline = timelineArray[selectedRow]
+        }
+    }
+    
     // MARK: - Custom Functions
     
     func fetchTimelineData() {
