@@ -17,6 +17,7 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationItem.title = "New Stepping Stone"
         self.setupTextfieldsView()
         self.setupDatePicker()
 
