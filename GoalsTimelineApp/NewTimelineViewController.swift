@@ -18,8 +18,13 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Don't allow End date to be in the past respective to start date
+        startDatePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.setupTextfieldsView()
-
+        self.setupDatePickers()
     }
   
     @IBAction func addNewTimeline(_ sender: Any) {
@@ -39,6 +44,8 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate {
         
         
     }
+    
+    // MARK: - Text Fields setup
 
     //Set up "fake" placeholder in Note textView
     func setupTextfieldsView() {
@@ -68,5 +75,16 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate {
         newTimelineNotesView.resignFirstResponder()
     }
     
+    // MARK: - Datepickers setup
+    
+    //Set start daypicker default value to today, don't let select date in the past
+    func setupDatePickers() {
+        startDatePicker.minimumDate = NSDate() as Date
+    }
+    
+    //Don't let End Date to be earlier then Start date
+   @objc func datePickerValueChanged(_ startDatePicker: UIDatePicker) {
+        endDatePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 1, to: startDatePicker.date)
+    }
 
 }
