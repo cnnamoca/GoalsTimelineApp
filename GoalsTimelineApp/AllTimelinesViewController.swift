@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
-class AllTimelinesViewController: UIViewController {
+class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
+    var managedObjectContext : NSManagedObjectContext? = nil
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -4,13 +4,25 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDelegate {
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let navigationController : UINavigationController = window?.rootViewController as! UINavigationController
+        navigationController.delegate = self
+        let controller : AllTimelinesViewController = navigationController.topViewController as! AllTimelinesViewController
+        controller.managedObjectContext = self.persistentContainer.viewContext
+        
+        
+        /*
+        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        navigationController.delegate = self;
+        ViewController *controller = (ViewController *)navigationController.topViewController;
+        controller.managedObjectContext = self.persistentContainer.viewContext; */
+        
         return true
     }
 
