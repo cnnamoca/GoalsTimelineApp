@@ -26,6 +26,9 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
         
     }
     
+    
+    // MARK: - Table View
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return timelineArray.count
     }
@@ -39,6 +42,8 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
         return cell
     
     }
+    
+    // MARK: - Custom Functions
     
     func fetchTimelineData() {
         

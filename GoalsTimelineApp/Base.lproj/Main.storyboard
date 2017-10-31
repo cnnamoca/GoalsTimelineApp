@@ -32,6 +32,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="cuw-zO-2n1" kind="show" id="zcE-K9-hIu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -74,6 +77,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9wa-LM-ZTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1431" y="-48"/>
+        </scene>
+        <!--TimeLine-->
+        <scene sceneID="7Dh-Pk-8MR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TimeLine" id="cuw-zO-2n1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qs7-QV-h7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1998" y="-121"/>
         </scene>
         <!--NewTimelineStoryboard-->
         <scene sceneID="SP3-Hk-bKC">
