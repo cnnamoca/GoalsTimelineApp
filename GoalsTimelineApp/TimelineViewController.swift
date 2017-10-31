@@ -24,6 +24,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewWillAppear(_ animated: Bool) {
         
+        super.viewWillAppear(true)
+        //Hide navigation bar 
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        
         self.fetchTimeline()
         
     }
