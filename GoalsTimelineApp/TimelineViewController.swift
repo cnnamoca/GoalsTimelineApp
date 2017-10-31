@@ -22,6 +22,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture(gesture:)))
         self.collectionView.addGestureRecognizer(longPressGesture)
         timelineTitleLabel.text = timeline.title
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,7 +32,15 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         self.fetchTimelineData()
+        print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
+
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let addSteppingStoneVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
+        addSteppingStoneVC.timelineObject = timeline
+
     }
     
     @objc
@@ -113,6 +122,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         print ("there are \(timelineArray.count) items in the array")
         
     }
-    
+
     
 }
