@@ -9,7 +9,15 @@
 import UIKit
 import CoreData
 
-class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource  {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
     
     var managedObjectContext : NSManagedObjectContext? = nil
     var timelineArray : Array<Timeline> = Array()
@@ -21,10 +29,10 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.fetchTimeline()
+        self.fetchTimelineData()
     }
     
-    func fetchTimeline() {
+    func fetchTimelineData() {
         
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer

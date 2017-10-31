@@ -28,7 +28,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         //Hide navigation bar 
         navigationController?.setNavigationBarHidden(true, animated: true)
         
-        self.fetchTimeline()
+        self.fetchTimelineData()
         
     }
     
@@ -100,7 +100,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBAction func addButton(_ sender: Any) {
     }
     
-    func fetchTimeline() {
+    func fetchTimelineData() {
         
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
