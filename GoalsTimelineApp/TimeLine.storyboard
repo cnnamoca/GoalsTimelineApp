@@ -117,6 +117,7 @@
                                 <state key="normal" backgroundImage="AddButton"/>
                                 <connections>
                                     <action selector="addButton:" destination="EQI-Od-2co" eventType="touchUpInside" id="KGb-er-4dE"/>
+                                    <segue destination="2cr-6C-val" kind="show" identifier="toAddSteppingStone" id="HEY-s7-KUs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -148,6 +149,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znk-jx-zSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-797.60000000000002" y="-104.7976011994003"/>
+        </scene>
+        <!--AddSteppingStone-->
+        <scene sceneID="ak3-fE-7Oi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddSteppingStone" id="2cr-6C-val" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxe-3D-epb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-236" y="-52"/>
         </scene>
         <!--Main-->
         <scene sceneID="n2J-4O-7g4">
