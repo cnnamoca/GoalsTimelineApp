@@ -106,8 +106,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         timelineArray = try! context.fetch(request)
         print ("there are \(timelineArray.count) items in the array")
         
-        
-        
     }
     
     
