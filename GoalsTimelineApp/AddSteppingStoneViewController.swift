@@ -18,6 +18,7 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: true)
         self.setupTextfieldsView()
+        self.setupDatePicker()
 
     }
 
@@ -62,7 +63,7 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
     // MARK: - Datepickers setup
     
     //Set start daypicker default value to today, don't let select date in the past
-    func setupDatePickers() {
+    func setupDatePicker() {
         steppingStoneDueDatePicker.minimumDate = NSDate() as Date
     }
     
