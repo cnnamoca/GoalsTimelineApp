@@ -14,6 +14,8 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var newTimelineNotesView: UITextView!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
+    var timelineObject : Timeline = Timeline ()
+    
     
 
     override func viewDidLoad() {
@@ -40,10 +42,18 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate {
         newTimeline.isCompleted = false
         
         appDelegate.saveContext()
-        
+        timelineObject = newTimeline
         
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            let timelineVC : TimelineViewController = segue.destination as! TimelineViewController
+        
+            timelineVC.timeline = timelineObject
+        }
+    
+    
     
     // MARK: - Text Fields setup
 
