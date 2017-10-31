@@ -5,24 +5,98 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Add Stepping Stone View Controller-->
         <scene sceneID="125-1b-MjD">
             <objects>
-                <viewController id="cF6-H5-2JT" sceneMemberID="viewController">
+                <viewController id="cF6-H5-2JT" customClass="AddSteppingStoneViewController" customModule="GoalsTimelineApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d1N-nQ-hKg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Stepping Stone Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PPj-Xa-7G8">
+                                <rect key="frame" x="19.5" y="77" width="337.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cBu-PS-NLF">
+                                <rect key="frame" x="19" y="123" width="337.5" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="lAF-bv-pm1"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hHL-OE-Dae">
+                                <rect key="frame" x="0.0" y="271" width="375" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="f6Y-Ce-rSH"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="531175345.43660802">
+                                    <!--2017-10-31 20:42:25 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6id-si-6N0">
+                                <rect key="frame" x="19" y="441" width="337.5" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Add new">
+                                    <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hHL-OE-Dae" firstAttribute="top" secondItem="cBu-PS-NLF" secondAttribute="bottom" constant="-2" id="4Xf-yf-2hF"/>
+                            <constraint firstItem="hHL-OE-Dae" firstAttribute="width" secondItem="d1N-nQ-hKg" secondAttribute="width" id="6b7-JS-kWz"/>
+                            <constraint firstItem="6id-si-6N0" firstAttribute="top" secondItem="hHL-OE-Dae" secondAttribute="bottom" constant="20" id="LzZ-6A-hBg"/>
+                            <constraint firstItem="PPj-Xa-7G8" firstAttribute="top" secondItem="Bhe-Xj-8hP" secondAttribute="top" constant="13" id="QcC-Jb-SJl"/>
+                            <constraint firstItem="cBu-PS-NLF" firstAttribute="width" secondItem="PPj-Xa-7G8" secondAttribute="width" id="U4Z-OJ-cA5"/>
+                            <constraint firstItem="cBu-PS-NLF" firstAttribute="top" secondItem="PPj-Xa-7G8" secondAttribute="bottom" constant="16" id="ZRE-E4-RCF"/>
+                            <constraint firstItem="hHL-OE-Dae" firstAttribute="centerX" secondItem="Bhe-Xj-8hP" secondAttribute="centerX" id="bDi-JS-Q6n"/>
+                            <constraint firstItem="cBu-PS-NLF" firstAttribute="centerX" secondItem="Bhe-Xj-8hP" secondAttribute="centerX" id="gFm-fm-HQh"/>
+                            <constraint firstItem="6id-si-6N0" firstAttribute="centerX" secondItem="Bhe-Xj-8hP" secondAttribute="centerX" id="hQH-Kr-Vl7"/>
+                            <constraint firstItem="PPj-Xa-7G8" firstAttribute="centerX" secondItem="Bhe-Xj-8hP" secondAttribute="centerX" id="nqF-ZR-7aB"/>
+                            <constraint firstItem="PPj-Xa-7G8" firstAttribute="width" secondItem="d1N-nQ-hKg" secondAttribute="width" multiplier="0.9" id="owt-wv-ez8"/>
+                            <constraint firstItem="6id-si-6N0" firstAttribute="width" secondItem="d1N-nQ-hKg" secondAttribute="width" multiplier="0.9" id="pCW-NS-iN5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bhe-Xj-8hP"/>
                     </view>
+                    <navigationItem key="navigationItem" id="aqI-j6-kaB"/>
+                    <connections>
+                        <outlet property="addNewSteppingStone" destination="6id-si-6N0" id="2aV-o5-ncl"/>
+                        <outlet property="steppingStoneDueDatePicker" destination="hHL-OE-Dae" id="UE9-Nk-KP8"/>
+                        <outlet property="steppingStoneNotes" destination="cBu-PS-NLF" id="VRC-LM-YSc"/>
+                        <outlet property="steppingStoneTitle" destination="PPj-Xa-7G8" id="M58-7c-3KB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmX-XN-b1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="134"/>
+            <point key="canvasLocation" x="439.19999999999999" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1n8-3F-5LI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yqt-cU-Sz4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="igo-8O-Xzl">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cF6-H5-2JT" kind="relationship" relationship="rootViewController" id="2Xd-Qc-udb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tx8-bQ-xmy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-335" y="134"/>
         </scene>
     </scenes>
 </document>
