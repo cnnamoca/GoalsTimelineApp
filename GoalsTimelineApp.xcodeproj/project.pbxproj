@@ -20,6 +20,8 @@
 		E63576CD1FA7F288006CABDA /* NewTimelineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63576CB1FA7F288006CABDA /* NewTimelineStoryboard.storyboard */; };
 		E63576CE1FA7F288006CABDA /* NewTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63576CC1FA7F288006CABDA /* NewTimelineViewController.swift */; };
 		E63576D01FA7F2B2006CABDA /* TimeLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E63576CF1FA7F2B2006CABDA /* TimeLine.storyboard */; };
+		E63576D21FA7F434006CABDA /* TimelineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63576D11FA7F434006CABDA /* TimelineCollectionViewCell.swift */; };
+		E63576D41FA7F56B006CABDA /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63576D31FA7F56B006CABDA /* TimelineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		E63576CB1FA7F288006CABDA /* NewTimelineStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewTimelineStoryboard.storyboard; sourceTree = "<group>"; };
 		E63576CC1FA7F288006CABDA /* NewTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTimelineViewController.swift; sourceTree = "<group>"; };
 		E63576CF1FA7F2B2006CABDA /* TimeLine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeLine.storyboard; sourceTree = "<group>"; };
+		E63576D11FA7F434006CABDA /* TimelineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewCell.swift; sourceTree = "<group>"; };
+		E63576D31FA7F56B006CABDA /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 				E63576CB1FA7F288006CABDA /* NewTimelineStoryboard.storyboard */,
 				E63576CF1FA7F2B2006CABDA /* TimeLine.storyboard */,
 				E63576CC1FA7F288006CABDA /* NewTimelineViewController.swift */,
+				E63576D11FA7F434006CABDA /* TimelineCollectionViewCell.swift */,
+				E63576D31FA7F56B006CABDA /* TimelineViewController.swift */,
 				E63576BF1FA7C7EB006CABDA /* Info.plist */,
 				E63576B71FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld */,
 			);
@@ -170,6 +176,8 @@
 				0D57D9E41FA7D24A00D674EF /* Timeline+CoreDataClass.swift in Sources */,
 				0D57D9E51FA7D24A00D674EF /* Timeline+CoreDataProperties.swift in Sources */,
 				E63576B11FA7C7EB006CABDA /* AppDelegate.swift in Sources */,
+				E63576D21FA7F434006CABDA /* TimelineCollectionViewCell.swift in Sources */,
+				E63576D41FA7F56B006CABDA /* TimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
