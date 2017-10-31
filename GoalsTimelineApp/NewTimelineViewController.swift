@@ -9,9 +9,8 @@
 import UIKit
 import CoreData
 
-class NewTimelineViewController: UIViewController {
+class NewTimelineViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var newTimelineTitleView: UITextField!
-    
     @IBOutlet weak var newTimelineNotesView: UITextView!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
@@ -43,10 +42,31 @@ class NewTimelineViewController: UIViewController {
 
     //Set up "fake" placeholder in Note textView
     func setupTextfieldsView() {
+        newTimelineNotesView.delegate = self
         newTimelineNotesView.textColor = UIColor.lightGray
         newTimelineNotesView.text = "Notes"
     }
     
+    //Remove "fake" placeholder when uset taps on textview
+    func textViewDidBeginEditing(_ newTimelineNotesView: UITextView) {
+        if newTimelineNotesView.text == "Notes"
+        {
+            newTimelineNotesView.text = ""
+            newTimelineNotesView.textColor = UIColor.black
+        }
+        newTimelineNotesView.becomeFirstResponder()
+    }
+    
+    //Show "fake" placeholder if user entered nothing
+    func textViewDidEndEditing(_ newTimelineNotesView: UITextView)
+    {
+        if (newTimelineNotesView.text == "")
+        {
+            newTimelineNotesView.text = "Notes"
+            newTimelineNotesView.textColor = .lightGray
+        }
+        newTimelineNotesView.resignFirstResponder()
+    }
     
 
 }
