@@ -11,6 +11,7 @@ import CoreData
 
 class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource  {
     
+    @IBOutlet weak var timelineTableView: UITableView!
     
     var managedObjectContext : NSManagedObjectContext? = nil
     var timelineArray : Array<Timeline> = Array()

@@ -34,6 +34,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ujb-46-qbg" id="ed6-uc-ec5"/>
+                                    <outlet property="delegate" destination="ujb-46-qbg" id="p0L-Kw-BHW"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pDy-uk-Kv5">
                                 <rect key="frame" x="16" y="612" width="343" height="35"/>
@@ -63,6 +67,9 @@
                         <viewLayoutGuide key="safeArea" id="PhF-94-TZ6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Your Timelines" id="mxf-uL-2AN"/>
+                    <connections>
+                        <outlet property="timelineTableView" destination="ygi-h1-vEs" id="jVt-4Q-y7O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9wa-LM-ZTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
