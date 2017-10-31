@@ -16,10 +16,13 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.fetchTimeline()
+    }
     
     func fetchTimeline() {
         
