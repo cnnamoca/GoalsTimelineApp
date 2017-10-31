@@ -17,6 +17,7 @@ class NewTimelineViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupTextfieldsView()
 
         // Do any additional setup after loading the view.
     }
@@ -30,6 +31,15 @@ class NewTimelineViewController: UIViewController {
     @IBAction func addNewTimeline(_ sender: Any) {
     }
 
+    //Changes textfields borders color
+    func setupTextfieldsView() {
+    let myColor : UIColor = UIColor.gray
+        newTimelineTitleView.layer.borderColor = myColor.cgColor
+        newTimelineNotesView.layer.borderColor = myColor.cgColor
+        
+        newTimelineTitleView.layer.borderWidth = 1
+        newTimelineNotesView.layer.borderWidth = 1
+    }
     /*
     // MARK: - Navigation
 
