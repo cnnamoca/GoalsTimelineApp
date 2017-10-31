@@ -76,4 +76,15 @@ class TimelineViewController: UIViewController {
         print("move item \(sourceIndexPath) to \(destinationIndexPath)")
         //update datasource
     }
+    
+    @IBAction func homeButton(_ sender: Any) {
+    }
+    @IBAction func editButton(_ sender: Any) {
+    }
+    @IBAction func addButton(_ sender: Any) {
+    }
+    
+    
+    
+    
 }

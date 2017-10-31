@@ -2,6 +2,54 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:GoalsTimelineApp.xcodeproj">
+      location = "group:../GoalsTimelineApp/AllTimelinesViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/AppDelegate.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/Assets.xcassets">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/Base.lproj">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/GoalsTimelineApp.xcdatamodeld">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/Info.plist">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/NewTimelineStoryboard.storyboard">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/NewTimelineViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/SteppingStone+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/SteppingStone+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/TimeLine.storyboard">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/Timeline+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/Timeline+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/TimelineCollectionViewCell.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/TimelineViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../GoalsTimelineApp/ViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
