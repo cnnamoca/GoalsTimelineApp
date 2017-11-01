@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NewTimelineViewController: UIViewController, UITextViewDelegate {
+class NewTimelineViewController: UIViewController, UITextViewDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var newTimelineTitleView: UITextField!
     @IBOutlet weak var newTimelineNotesView: UITextView!
     @IBOutlet weak var startDatePicker: UIDatePicker!
@@ -22,6 +22,9 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         //Don't allow End date to be in the past respective to start date
         startDatePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+       //resigns FirstResponder when clicking outside of textview
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +65,7 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate {
         newTimelineNotesView.delegate = self
         newTimelineNotesView.textColor = UIColor.lightGray
         newTimelineNotesView.text = "Notes"
+        
     }
     
     //Remove "fake" placeholder when uset taps on textview
