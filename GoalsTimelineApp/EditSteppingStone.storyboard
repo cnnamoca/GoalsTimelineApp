@@ -39,11 +39,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="mk1-na-ksT"/>
                                 </constraints>
-                                <state key="normal" title="Add new">
+                                <state key="normal" title="Save Changes">
                                     <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveStappingStoneChanges:" destination="b2G-16-wlX" eventType="touchUpInside" id="G2Q-8Z-TzU"/>
+                                    <action selector="saveSteppingStoneChanges:" destination="b2G-16-wlX" eventType="touchUpInside" id="ahr-JI-dJh"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GkN-vZ-2Nq">

@@ -1,11 +1,3 @@
-//
-//  EditSteppingViewController.swift
-//  GoalsTimelineApp
-//
-//  Created by Olga on 10/31/17.
-//  Copyright © 2017 Carlo Namoca. All rights reserved.
-//
-
 import UIKit
 
 class EditSteppingViewController: UIViewController {
@@ -13,18 +5,17 @@ class EditSteppingViewController: UIViewController {
     @IBOutlet weak var edtitSteppingStoneTitleView: UITextField!
     @IBOutlet weak var editSteppingStoneNotesView: UITextView!
     @IBOutlet weak var editSteppingStoneDeadline: UIDatePicker!
+    var steppingStoneObject : SteppingStone = SteppingStone ()
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    @IBAction func saveStappingStoneChanges(_ sender: UIButton) {
+    @IBAction func saveSteppingStoneChanges(_ sender: UIButton) {
     }
     
     /*
