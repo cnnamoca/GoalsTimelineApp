@@ -64,15 +64,19 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //TODO: check if steppingstone is not empty
+    
+        // lazy date comparison. update to NSCalendar
+        let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
+        let formatter : DateFormatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        let dateString : String = formatter.string(from: indexPathDate as Date)
         
         let steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
-        
         for step : SteppingStone in steppingArray{
-            if step.dateIndex == Int16(indexPath.row){
+            let stepDateString : String = formatter.string(from: step.deadline! as Date)
+            if stepDateString == dateString {
                 performSegue(withIdentifier: "toEditSteppingStone", sender: step)
             }
-            //        let selectedItem: SteppingStone = step
-            //        let steppingStone : SteppingStone = selectedItem
         }
     }
     
