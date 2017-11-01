@@ -16,6 +16,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var timelineArray : Array<Timeline> = Array()
     var timeline : Timeline = Timeline ()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,19 +85,29 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     // MARK: - Collection View Data Source
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
-//        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
-//        var steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
+        var steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
+        steppingArray = steppingArray.sorted { $0.deadline?.compare($1.deadline! as Date) == .orderedAscending }
         
-        
-        
-//        steppingArray = steppingArray.sorted { $0.deadline?.compare($1.deadline! as Date) == .orderedAscending }
-//
-//        cell.titleLabel.text = steppingArray[indexPath.row].title
-//        cell.dateLabel.text = "\(String(describing: steppingArray[indexPath.row].deadline))"
-//
+        var cell : UICollectionViewCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
+        print("\(steppingArray.count)")
+
+        if steppingArray.count > 0 {
+            for SteppingStone in steppingArray{
+                if SteppingStone.dateIndex == Int16(indexPath.row){
+                    let timelineCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
+
+//                    timelineCell.titleLabel.text = steppingArray[indexPath.row].title
+//                    timelineCell.dateLabel.text = "\(String(describing: steppingArray[indexPath.row].deadline))"
+                    cell = timelineCell
+                }
+            }
+
+        }
+
         return cell
+        
     }
+        
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         

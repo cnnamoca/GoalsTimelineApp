@@ -86,19 +86,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="wVI-e4-ngL">
-                                                    <rect key="frame" x="16" y="45" width="10" height="10"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="10" id="Zc8-f1-7be"/>
-                                                    </constraints>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EmptyCell" translatesAutoresizingMaskIntoConstraints="NO" id="wVI-e4-ngL">
+                                                    <rect key="frame" x="88" y="0.0" width="124" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstAttribute="bottomMargin" secondItem="wVI-e4-ngL" secondAttribute="bottom" constant="45" id="ebv-tz-9dz"/>
-                                            <constraint firstItem="wVI-e4-ngL" firstAttribute="centerY" secondItem="1Se-uM-OgI" secondAttribute="centerY" id="p5X-5V-bpd"/>
-                                            <constraint firstItem="wVI-e4-ngL" firstAttribute="leading" secondItem="1Se-uM-OgI" secondAttribute="leadingMargin" id="ven-M7-05b"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="wVI-e4-ngL" id="Kaq-6b-fjd"/>
                                         </connections>
@@ -205,7 +198,7 @@
         <image name="AddButton" width="89" height="85"/>
         <image name="CustomCell" width="375" height="114"/>
         <image name="EditButton" width="88" height="85"/>
-        <image name="EmptyCell" width="77" height="80"/>
+        <image name="EmptyCell" width="54" height="380"/>
         <image name="HomeButton" width="256" height="257"/>
     </resources>
 </document>
