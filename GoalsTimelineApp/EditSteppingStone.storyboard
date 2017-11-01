@@ -56,11 +56,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PxO-op-OQt">
+                                <rect key="frame" x="151" y="528" width="74" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelEditing:" destination="b2G-16-wlX" eventType="touchUpInside" id="rga-iO-YxY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7M0-Zn-6qs" firstAttribute="top" secondItem="CLe-1F-NTA" secondAttribute="top" constant="36" id="4xV-ar-jDL"/>
                             <constraint firstItem="Mdu-0s-JQC" firstAttribute="centerX" secondItem="CLe-1F-NTA" secondAttribute="centerX" id="C3J-ae-Gdh"/>
+                            <constraint firstItem="PxO-op-OQt" firstAttribute="centerX" secondItem="CLe-1F-NTA" secondAttribute="centerX" id="GI8-0c-IDJ"/>
                             <constraint firstItem="mhm-yB-hvx" firstAttribute="top" secondItem="Mdu-0s-JQC" secondAttribute="bottom" constant="20" id="SSn-Xp-Gsj"/>
                             <constraint firstItem="GkN-vZ-2Nq" firstAttribute="top" secondItem="7M0-Zn-6qs" secondAttribute="bottom" constant="30" id="Suv-QY-gno"/>
                             <constraint firstItem="GkN-vZ-2Nq" firstAttribute="width" secondItem="Fjt-05-AwQ" secondAttribute="width" multiplier="0.9" id="TcA-gm-LYO"/>
@@ -68,6 +76,7 @@
                             <constraint firstItem="7M0-Zn-6qs" firstAttribute="width" secondItem="Fjt-05-AwQ" secondAttribute="width" multiplier="0.9" id="dXU-I2-jsf"/>
                             <constraint firstItem="mhm-yB-hvx" firstAttribute="centerX" secondItem="CLe-1F-NTA" secondAttribute="centerX" id="gcx-ve-iWu"/>
                             <constraint firstItem="Mdu-0s-JQC" firstAttribute="width" secondItem="Fjt-05-AwQ" secondAttribute="width" id="hvb-Di-y94"/>
+                            <constraint firstItem="PxO-op-OQt" firstAttribute="top" secondItem="mhm-yB-hvx" secondAttribute="bottom" constant="49" id="l4Z-mw-93N"/>
                             <constraint firstItem="7M0-Zn-6qs" firstAttribute="centerX" secondItem="CLe-1F-NTA" secondAttribute="centerX" id="ldB-WQ-wKl"/>
                             <constraint firstItem="mhm-yB-hvx" firstAttribute="width" secondItem="Fjt-05-AwQ" secondAttribute="width" multiplier="0.9" id="zFb-JD-2B9"/>
                             <constraint firstItem="Mdu-0s-JQC" firstAttribute="top" secondItem="GkN-vZ-2Nq" secondAttribute="bottom" constant="8" id="zWw-gh-2Ig"/>
