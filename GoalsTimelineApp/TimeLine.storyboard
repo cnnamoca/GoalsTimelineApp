@@ -76,6 +76,7 @@
                                         <connections>
                                             <outlet property="dateLabel" destination="hSi-cu-I9f" id="WQx-Rc-ces"/>
                                             <outlet property="titleLabel" destination="gn7-nA-dSE" id="qg0-Rm-2cG"/>
+                                            <segue destination="165-ox-gWh" kind="presentation" id="bkx-lH-YC6"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emptyCell" id="1Se-uM-OgI" customClass="EmptyCollectionViewCell" customModule="GoalsTimelineApp" customModuleProvider="target">
@@ -190,6 +191,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwl-ay-Sbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-168" y="-392"/>
+        </scene>
+        <!--EditSteppingStone-->
+        <scene sceneID="ehY-tQ-3Ym">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EditSteppingStone" id="165-ox-gWh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ip-gW-F3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-110" y="-233"/>
         </scene>
     </scenes>
     <resources>
