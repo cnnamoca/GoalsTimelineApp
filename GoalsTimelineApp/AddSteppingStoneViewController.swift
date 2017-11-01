@@ -48,7 +48,13 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
         newSteppingStone.deadline = steppingStoneDueDatePicker.date as NSDate
         newSteppingStone.isCompleted = false
         
+        let dateDifference : TimeInterval = (newSteppingStone.deadline?.timeIntervalSince(timelineObject.startDate! as Date))!
+        let intDate = Int(dateDifference)/86400
+        
+        newSteppingStone.dateIndex = Int16(intDate)
+        
         timelineObject.addToSteppingStones(newSteppingStone)
+        
         
         appDelegate.saveContext()
         

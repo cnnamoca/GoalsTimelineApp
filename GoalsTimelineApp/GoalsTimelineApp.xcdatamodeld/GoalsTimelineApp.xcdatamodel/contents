@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13241" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="SteppingStone" representedClassName="SteppingStone" syncable="YES">
+        <attribute name="dateIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="deadline" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -16,7 +17,7 @@
         <relationship name="steppingStones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SteppingStone" inverseName="timelines" inverseEntity="SteppingStone" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SteppingStone" positionX="153" positionY="53" width="128" height="118"/>
+        <element name="SteppingStone" positionX="153" positionY="53" width="128" height="135"/>
         <element name="Timeline" positionX="-72" positionY="-18" width="128" height="133"/>
     </elements>
 </model>
