@@ -70,6 +70,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             print("ended")
             //update cell name
             //update cell below/above as well
+            //timeinterval needed to get date would be timeline.startDate + (cell at indexpath.row * 86400) -> convert to date
+            
+//            var date = NSDate(timeInterval: (//timeline.startDate// + (cell[indexpath.row] * 86400)), since: timeline.startDate)
+            
             
             self.collectionView.reloadData()
             collectionView.endInteractiveMovement()
@@ -149,6 +153,12 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         print ("there are \(timelineArray.count) items in the array")
         
     }
+    
+    //MARK: CONVERT TIME INTERVAL TO DATE
+//    func dateConv() {
+//        var startDate : NSDate = timeline.startDate!
+//        var date : NSDate = CFDateGetTimeIntervalSinceDate(startDate, <#T##otherDate: CFDate!##CFDate!#>)
+//    }
 
     
 }
