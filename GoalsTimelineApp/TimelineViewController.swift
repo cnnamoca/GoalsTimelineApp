@@ -15,7 +15,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var collectionView: UICollectionView!
     var timelineArray : Array<Timeline> = Array()
     var timeline : Timeline = Timeline ()
-    
+    var timelineDurationSeconds : Double = Double()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,14 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         self.fetchTimelineData()
+
+        let startSec = timeline.startDate?.timeIntervalSince1970
+        let endSec = timeline.endDate?.timeIntervalSince1970
+        timelineDurationSeconds = endSec! - startSec!
+        print("TIMELINE DURATION IN SECONDS!: \(timelineDurationSeconds)")
+        
+        
+        
         collectionView.reloadData()
         print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
 
