@@ -15,7 +15,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var collectionView: UICollectionView!
     var timelineArray : Array<Timeline> = Array()
     var timeline : Timeline = Timeline ()
-    var timelineDurationSeconds : Double = Double()
+    var startSec : Int = Int ()
+
     
     var steppingStoneArray : Array<SteppingStone> = Array()
     
@@ -26,7 +27,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         self.collectionView.addGestureRecognizer(longPressGesture)
         timelineTitleLabel.text = timeline.title
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,15 +36,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         self.fetchTimelineData()
+
+        startSec = Int((timeline.startDate?.timeIntervalSince(timeline.startDate! as Date))!)
+
         self.fetchSteppingStone()
 
-        let startSec = timeline.startDate?.timeIntervalSince1970
-//        let endSec = timeline.endDate?.timeIntervalSince1970
-//        timelineDurationSeconds = endSec! - startSec!
-        print("TIMELINE DURATION IN SECONDS!: \(timelineDurationSeconds)")
-        
-        
-        
         collectionView.reloadData()
         print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
 
@@ -119,18 +115,34 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         var steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
         steppingArray = steppingArray.sorted { $0.deadline?.compare($1.deadline! as Date) == .orderedAscending }
         
-        var cell : UICollectionViewCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
+        var cell : UICollectionViewCell = UICollectionViewCell()
+        let emptyCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
+        let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
+        let formatter : DateFormatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        let dateString : String = formatter.string(from: indexPathDate as Date)
+        emptyCell.dateLabel.text = dateString
+        print("empty\(dateString)")
+        cell = emptyCell
+
+
+
+        
         print("\(steppingArray.count)")
 
         if steppingArray.count > 0 {
             
             // make vvv into function later
             for step : SteppingStone in steppingArray{
-                if step.dateIndex == Int16(indexPath.row){
-                    
+                
+                // vvv lazy comparison. Update to use NSCalendar later
+                let stepDateString : String = formatter.string(from: step.deadline! as Date)
+                print("occupied " + stepDateString)
+
+                if stepDateString == dateString {
+//                    print("occupied\(step.deadline!)")
+
                     let timelineCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
-                    let formatter : DateFormatter = DateFormatter()
-                    formatter.dateFormat = "dd-MM-yyyy"
                     let myString : String = formatter.string(from: step.deadline! as Date)
                     timelineCell.dateLabel.text = "\(myString)"
                     timelineCell.titleLabel.text = step.title
@@ -151,7 +163,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let dateDifference : TimeInterval = (timeline.endDate?.timeIntervalSince(timeline.startDate! as Date))!
         let intDate = Int(dateDifference)/86400
         print("dates \(intDate)")
-        return intDate
+        return intDate + 1
     }
     
     //    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
