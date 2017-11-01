@@ -28,6 +28,7 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate, UIGesture
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         // "Add new Timeline" is disabled until user input timeline title
         self.addNewTimelineButton.isEnabled = false
+        addNewTimelineButton.alpha = 0.5;
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +67,7 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate, UIGesture
             self.addNewTimelineButton.isEnabled = false
         } else {
             self.addNewTimelineButton.isEnabled = true
+            addNewTimelineButton.alpha = 1.0;
         }
         return true
     }
