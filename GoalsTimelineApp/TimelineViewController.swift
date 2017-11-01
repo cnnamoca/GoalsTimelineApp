@@ -46,7 +46,24 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let addSteppingStoneVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
         addSteppingStoneVC.timelineObject = timeline
         }
+        if segue.identifier == "toEditSteppingStone" {
+            let editSteppingStoneVC: EditSteppingViewController = segue.destination as! EditSteppingViewController
+            
+            let steppingStone : SteppingStone = sender as! SteppingStone
+            editSteppingStoneVC.steppingStoneObject = steppingStone
+        }
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //TODO: check if steppingstone is not empty
+
+        var steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
+        let selectedItem: SteppingStone = steppingArray[indexPath.item]
+        let steppingStone : SteppingStone = selectedItem
+        
+        performSegue(withIdentifier: "toEditSteppingStone", sender: steppingStone)
+        
     }
     
     @objc
