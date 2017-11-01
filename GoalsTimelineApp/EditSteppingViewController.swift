@@ -11,12 +11,20 @@ class EditSteppingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.populateFieldsWithExistindData()
     }
     
     @IBAction func saveSteppingStoneChanges(_ sender: UIButton) {
+        
     }
+    
+    // MARK: - View setup
+    func populateFieldsWithExistindData() {
+        edtitSteppingStoneTitleView.text = steppingStoneObject.title
+        editSteppingStoneNotesView.text = steppingStoneObject.info
+        editSteppingStoneDeadline.date = steppingStoneObject.deadline! as Date
+    }
+    
     
     /*
     // MARK: - Navigation
