@@ -26,6 +26,8 @@
 		E64960681FA907B90093A1E9 /* AddSteppingStone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E64960671FA907B90093A1E9 /* AddSteppingStone.storyboard */; };
 		E649606A1FA907CE0093A1E9 /* AddSteppingStoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64960691FA907CE0093A1E9 /* AddSteppingStoneViewController.swift */; };
 		E649606C1FA948000093A1E9 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E649606B1FA948000093A1E9 /* EmptyCollectionViewCell.swift */; };
+		E649606F1FA94FEA0093A1E9 /* EditSteppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E649606D1FA94FEA0093A1E9 /* EditSteppingViewController.swift */; };
+		E64960701FA94FEA0093A1E9 /* EditSteppingStone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E649606E1FA94FEA0093A1E9 /* EditSteppingStone.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		E64960671FA907B90093A1E9 /* AddSteppingStone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSteppingStone.storyboard; sourceTree = "<group>"; };
 		E64960691FA907CE0093A1E9 /* AddSteppingStoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSteppingStoneViewController.swift; sourceTree = "<group>"; };
 		E649606B1FA948000093A1E9 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
+		E649606D1FA94FEA0093A1E9 /* EditSteppingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSteppingViewController.swift; sourceTree = "<group>"; };
+		E649606E1FA94FEA0093A1E9 /* EditSteppingStone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditSteppingStone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 		E63576AF1FA7C7EB006CABDA /* GoalsTimelineApp */ = {
 			isa = PBXGroup;
 			children = (
+				E649606E1FA94FEA0093A1E9 /* EditSteppingStone.storyboard */,
+				E649606D1FA94FEA0093A1E9 /* EditSteppingViewController.swift */,
 				0DEFC0E61FA8113700C3363B /* SteppingStone+CoreDataClass.swift */,
 				0DEFC0E51FA8113600C3363B /* SteppingStone+CoreDataProperties.swift */,
 				0DEFC0E81FA8113700C3363B /* Timeline+CoreDataClass.swift */,
@@ -177,6 +183,7 @@
 				E63576BB1FA7C7EB006CABDA /* Assets.xcassets in Resources */,
 				0D57D9ED1FA7F4CE00D674EF /* NewTimelineStoryboard.storyboard in Resources */,
 				0DEFC0F31FA8153400C3363B /* TimeLine.storyboard in Resources */,
+				E64960701FA94FEA0093A1E9 /* EditSteppingStone.storyboard in Resources */,
 				E64960681FA907B90093A1E9 /* AddSteppingStone.storyboard in Resources */,
 				E63576B61FA7C7EB006CABDA /* Main.storyboard in Resources */,
 				0DEFC0F11FA8143400C3363B /* Info.plist in Resources */,
@@ -198,6 +205,7 @@
 				E63576B91FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld in Sources */,
 				0DEFC0EB1FA8113700C3363B /* Timeline+CoreDataProperties.swift in Sources */,
 				0DEFC0EC1FA8113700C3363B /* Timeline+CoreDataClass.swift in Sources */,
+				E649606F1FA94FEA0093A1E9 /* EditSteppingViewController.swift in Sources */,
 				E63576B11FA7C7EB006CABDA /* AppDelegate.swift in Sources */,
 				0DEFC0EE1FA8135B00C3363B /* TimelineCollectionViewCell.swift in Sources */,
 				E649606C1FA948000093A1E9 /* EmptyCollectionViewCell.swift in Sources */,
