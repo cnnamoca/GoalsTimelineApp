@@ -27,6 +27,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         self.collectionView.addGestureRecognizer(longPressGesture)
         timelineTitleLabel.text = timeline.title
         
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeRight(gesture:)))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.collectionView.addGestureRecognizer(swipeRight)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +82,23 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                 performSegue(withIdentifier: "toEditSteppingStone", sender: step)
             }
         }
+    }
+    
+    //MARK: GESTURE RECOGNIZERS methods
+    @objc
+    func handleSwipeRight(gesture: UISwipeGestureRecognizer){
+        guard
+            let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
+            else {return}
+        //        let cell : TimelineCollectionViewCell = TimelineCollectionViewCell()
+        //        let emptyCell : EmptyCollectionViewCell = self.collectionView.cellForItem(at: indexPath!) as! EmptyCollectionViewCell
+        if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
+            let cell : TimelineCollectionViewCell = (self.collectionView.cellForItem(at: indexPath) as? TimelineCollectionViewCell)!
+            cell.imageView.image = UIImage(named: "completedCell")
+            
+        }
+        
+        //        self.collectionView.cellForItem(at: indexPath!)?.
     }
     
     @objc

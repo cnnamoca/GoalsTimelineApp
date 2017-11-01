@@ -75,6 +75,7 @@
                                         <size key="customSize" width="300" height="100"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="hSi-cu-I9f" id="WQx-Rc-ces"/>
+                                            <outlet property="imageView" destination="wC2-n4-pwt" id="GNa-4c-eR6"/>
                                             <outlet property="titleLabel" destination="gn7-nA-dSE" id="qg0-Rm-2cG"/>
                                         </connections>
                                     </collectionViewCell>
