@@ -9,22 +9,25 @@
 import UIKit
 import CoreData
 
-class NewTimelineViewController: UIViewController, UITextViewDelegate, UIGestureRecognizerDelegate {
+class NewTimelineViewController: UIViewController, UITextViewDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate {
     @IBOutlet weak var newTimelineTitleView: UITextField!
     @IBOutlet weak var newTimelineNotesView: UITextView!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var addNewTimelineButton: UIButton!
     var timelineObject : Timeline = Timeline ()
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        newTimelineTitleView.delegate = self
         //Don't allow End date to be in the past respective to start date
         startDatePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
        //resigns FirstResponder when clicking outside of textview
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
-
+        // "Add new Timeline" is disabled until user input timeline title
+        self.addNewTimelineButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,8 +49,6 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate, UIGesture
         
         appDelegate.saveContext()
         timelineObject = newTimeline
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,15 +58,23 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate, UIGesture
         }
     
     
-    
     // MARK: - Text Fields setup
 
+    //Enables/disables "Add new Timeline" button depending on title text field
+    func textFieldShouldEndEditing(_ newTimelineTitleView: UITextField) -> Bool {
+        if (newTimelineTitleView.text?.isEmpty)! {
+            self.addNewTimelineButton.isEnabled = false
+        } else {
+            self.addNewTimelineButton.isEnabled = true
+        }
+        return true
+    }
+    
     //Set up "fake" placeholder in Note textView
     func setupTextfieldsView() {
         newTimelineNotesView.delegate = self
         newTimelineNotesView.textColor = UIColor.lightGray
         newTimelineNotesView.text = "Notes"
-        
     }
     
     //Remove "fake" placeholder when uset taps on textview
