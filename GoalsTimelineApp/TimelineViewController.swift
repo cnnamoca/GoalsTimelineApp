@@ -15,7 +15,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var collectionView: UICollectionView!
     var timelineArray : Array<Timeline> = Array()
     var timeline : Timeline = Timeline ()
-    
+    var timelineDurationSeconds : Double = Double()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,14 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         self.fetchTimelineData()
+
+        let startSec = timeline.startDate?.timeIntervalSince1970
+//        let endSec = timeline.endDate?.timeIntervalSince1970
+//        timelineDurationSeconds = endSec! - startSec!
+        print("TIMELINE DURATION IN SECONDS!: \(timelineDurationSeconds)")
+        
+        
+        
         collectionView.reloadData()
         print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
 
@@ -46,7 +54,27 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let addSteppingStoneVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
         addSteppingStoneVC.timelineObject = timeline
         }
+        if segue.identifier == "toEditSteppingStone" {
+            let editSteppingStoneVC: EditSteppingViewController = segue.destination as! EditSteppingViewController
+            
+            let steppingStone : SteppingStone = sender as! SteppingStone
+            editSteppingStoneVC.steppingStoneObject = steppingStone
+        }
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //TODO: check if steppingstone is not empty
+        
+        let steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
+        
+        for step : SteppingStone in steppingArray{
+            if step.dateIndex == Int16(indexPath.row){
+                performSegue(withIdentifier: "toEditSteppingStone", sender: step)
+            }
+            //        let selectedItem: SteppingStone = step
+            //        let steppingStone : SteppingStone = selectedItem
+        }
     }
     
     @objc
@@ -96,12 +124,18 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         print("\(steppingArray.count)")
 
         if steppingArray.count > 0 {
-            for SteppingStone in steppingArray{
-                if SteppingStone.dateIndex == Int16(indexPath.row){
+            
+            // make vvv into function later
+            for step : SteppingStone in steppingArray{
+                if step.dateIndex == Int16(indexPath.row){
+                    
                     let timelineCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
-
-//                    timelineCell.titleLabel.text = steppingArray[indexPath.row].title
-//                    timelineCell.dateLabel.text = "\(String(describing: steppingArray[indexPath.row].deadline))"
+                    let formatter : DateFormatter = DateFormatter()
+                    formatter.dateFormat = "dd-MM-yyyy"
+                    let myString : String = formatter.string(from: step.deadline! as Date)
+                    timelineCell.dateLabel.text = "\(myString)"
+                    timelineCell.titleLabel.text = step.title
+                    
                     cell = timelineCell
                 }
             }
