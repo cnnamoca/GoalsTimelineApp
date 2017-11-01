@@ -18,6 +18,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var startSec : Int = Int ()
 
     
+    var steppingStoneArray : Array<SteppingStone> = Array()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +36,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         self.fetchTimelineData()
+
         startSec = Int((timeline.startDate?.timeIntervalSince(timeline.startDate! as Date))!)
+
+        self.fetchSteppingStone()
+
         collectionView.reloadData()
         print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
 
@@ -191,6 +197,14 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         timelineArray = try! context.fetch(request)
         print ("there are \(timelineArray.count) items in the array")
         
+    }
+    
+    func fetchSteppingStone() {
+        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        let context : NSManagedObjectContext = persistentContainer.viewContext
+        let request : NSFetchRequest = SteppingStone.fetchRequest()
+        steppingStoneArray = try! context.fetch(request)
     }
 
     

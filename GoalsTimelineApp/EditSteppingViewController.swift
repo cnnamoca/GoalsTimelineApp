@@ -1,4 +1,5 @@
 import UIKit
+import CoreData
 
 class EditSteppingViewController: UIViewController {
 
@@ -15,8 +16,14 @@ class EditSteppingViewController: UIViewController {
     }
     
     @IBAction func saveSteppingStoneChanges(_ sender: UIButton) {
+
+        self.steppingStoneObject.title = edtitSteppingStoneTitleView.text
+        self.steppingStoneObject.info = editSteppingStoneNotesView.text
+        self.steppingStoneObject.deadline = editSteppingStoneDeadline.date as NSDate
         
+        self.dismiss(animated: true, completion: nil)
     }
+    
     
     @IBAction func cancelEditing(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
