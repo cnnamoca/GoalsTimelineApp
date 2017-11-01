@@ -84,21 +84,26 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     // MARK: - Collection View Data Source
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
-        var steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
+//        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
+//        var steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
         
-        steppingArray = steppingArray.sorted { $0.deadline?.compare($1.deadline! as Date) == .orderedAscending }
         
-        cell.titleLabel.text = steppingArray[indexPath.row].title
-        cell.dateLabel.text = "\(steppingArray[indexPath.row].deadline)"
         
+//        steppingArray = steppingArray.sorted { $0.deadline?.compare($1.deadline! as Date) == .orderedAscending }
+//
+//        cell.titleLabel.text = steppingArray[indexPath.row].title
+//        cell.dateLabel.text = "\(String(describing: steppingArray[indexPath.row].deadline))"
+//
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        //needs to be updated
-        return (timeline.steppingStones?.count)!
+        let dateDifference : TimeInterval = (timeline.endDate?.timeIntervalSince(timeline.startDate! as Date))!
+        let intDate = Int(dateDifference)/86400
+        print("dates \(intDate)")
+        return intDate
     }
     
     //    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
