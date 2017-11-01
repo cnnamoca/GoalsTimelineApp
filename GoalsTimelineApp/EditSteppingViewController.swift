@@ -15,8 +15,8 @@ class EditSteppingViewController: UIViewController {
         self.populateFieldsWithExistindData()
     }
     
-    @IBAction func saveSteppingStoneChanges(_ sender: UIButton) {
-
+    @IBAction func saveSteppingStoneChanges(_ sender: UIBarButtonItem) {
+        
         self.steppingStoneObject.title = edtitSteppingStoneTitleView.text
         self.steppingStoneObject.info = editSteppingStoneNotesView.text
         self.steppingStoneObject.deadline = editSteppingStoneDeadline.date as NSDate
@@ -24,10 +24,10 @@ class EditSteppingViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    @IBAction func cancelEditing(_ sender: UIButton) {
+    @IBAction func cancelEditing(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     // MARK: - View setup
     func populateFieldsWithExistindData() {
         edtitSteppingStoneTitleView.text = steppingStoneObject.title
@@ -35,15 +35,4 @@ class EditSteppingViewController: UIViewController {
         editSteppingStoneDeadline.date = steppingStoneObject.deadline! as Date
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
