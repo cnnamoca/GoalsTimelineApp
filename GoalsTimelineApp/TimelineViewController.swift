@@ -36,8 +36,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         self.fetchTimelineData()
 
         let startSec = timeline.startDate?.timeIntervalSince1970
-        let endSec = timeline.endDate?.timeIntervalSince1970
-        timelineDurationSeconds = endSec! - startSec!
+//        let endSec = timeline.endDate?.timeIntervalSince1970
+//        timelineDurationSeconds = endSec! - startSec!
         print("TIMELINE DURATION IN SECONDS!: \(timelineDurationSeconds)")
         
         
@@ -65,13 +65,16 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //TODO: check if steppingstone is not empty
-
-        var steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
-        let selectedItem: SteppingStone = steppingArray[indexPath.item]
-        let steppingStone : SteppingStone = selectedItem
         
-        performSegue(withIdentifier: "toEditSteppingStone", sender: steppingStone)
+        let steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
         
+        for step : SteppingStone in steppingArray{
+            if step.dateIndex == Int16(indexPath.row){
+                performSegue(withIdentifier: "toEditSteppingStone", sender: step)
+            }
+            //        let selectedItem: SteppingStone = step
+            //        let steppingStone : SteppingStone = selectedItem
+        }
     }
     
     @objc
