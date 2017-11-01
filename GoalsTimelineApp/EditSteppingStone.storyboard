@@ -13,7 +13,7 @@
         <!--Edit Stepping Stone-->
         <scene sceneID="Umo-9a-uNc">
             <objects>
-                <viewController id="b2G-16-wlX" sceneMemberID="viewController">
+                <viewController id="b2G-16-wlX" customClass="EditSteppingViewController" customModule="GoalsTimelineApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fjt-05-AwQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,6 +42,9 @@
                                 <state key="normal" title="Add new">
                                     <color key="titleColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveStappingStoneChanges:" destination="b2G-16-wlX" eventType="touchUpInside" id="G2Q-8Z-TzU"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GkN-vZ-2Nq">
                                 <rect key="frame" x="19" y="116" width="337.5" height="150"/>
@@ -72,6 +75,11 @@
                         <viewLayoutGuide key="safeArea" id="CLe-1F-NTA"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Stepping Stone" id="Q2J-PX-n8R"/>
+                    <connections>
+                        <outlet property="editSteppingStoneDeadline" destination="Mdu-0s-JQC" id="a9y-vy-uQr"/>
+                        <outlet property="editSteppingStoneNotesView" destination="GkN-vZ-2Nq" id="cVS-Ra-Kdv"/>
+                        <outlet property="edtitSteppingStoneTitleView" destination="7M0-Zn-6qs" id="sCC-Gb-dFg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pF-Bd-Iyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

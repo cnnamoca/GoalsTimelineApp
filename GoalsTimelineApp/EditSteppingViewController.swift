@@ -10,6 +10,9 @@ import UIKit
 
 class EditSteppingViewController: UIViewController {
 
+    @IBOutlet weak var edtitSteppingStoneTitleView: UITextField!
+    @IBOutlet weak var editSteppingStoneNotesView: UITextView!
+    @IBOutlet weak var editSteppingStoneDeadline: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +24,9 @@ class EditSteppingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func saveStappingStoneChanges(_ sender: UIButton) {
+    }
+    
     /*
     // MARK: - Navigation
 
