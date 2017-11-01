@@ -24,8 +24,6 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationItem.title = "New Stepping Stone"
         self.setupTextfieldsView()
         self.setupDatePicker()
 
@@ -37,7 +35,7 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
     }
     
 
-    @IBAction func addSteppingStoneClicked(_ sender: UIButton) {
+    @IBAction func addSteppingStoneClicked(_ sender: UIBarButtonItem) {
         
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
@@ -61,11 +59,10 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
         
         self.dismiss(animated: true, completion: nil)
     }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        <#code#>
-//    }
     
+    @IBAction func cancelAddingNewSteppingStone(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - Text Fields setup
     
@@ -107,14 +104,6 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
