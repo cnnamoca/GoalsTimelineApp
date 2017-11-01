@@ -15,7 +15,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var collectionView: UICollectionView!
     var timelineArray : Array<Timeline> = Array()
     var timeline : Timeline = Timeline ()
-    var timelineDurationSeconds : Double = Double()
+//    var timelineDurationSeconds : Double = Double()
+    var startSec : Int = Int ()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture(gesture:)))
         self.collectionView.addGestureRecognizer(longPressGesture)
         timelineTitleLabel.text = timeline.title
-        
         
     }
     
@@ -34,11 +35,12 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         self.fetchTimelineData()
+        startSec = Int((timeline.startDate?.timeIntervalSince(timeline.startDate! as Date))!)
 
-        let startSec = timeline.startDate?.timeIntervalSince1970
+//        let startSec = timeline.startDate?.timeIntervalSince1970
 //        let endSec = timeline.endDate?.timeIntervalSince1970
 //        timelineDurationSeconds = endSec! - startSec!
-        print("TIMELINE DURATION IN SECONDS!: \(timelineDurationSeconds)")
+//        print("TIMELINE DURATION IN SECONDS!: \(timelineDurationSeconds)")
         
         
         
@@ -117,6 +119,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         steppingArray = steppingArray.sorted { $0.deadline?.compare($1.deadline! as Date) == .orderedAscending }
         
         var cell : UICollectionViewCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
+        var date = NSDate(timeInterval: (TimeInterval(startSec + (indexPath.row * 86400))), since:timeline.startDate! as Date )
+        // now set this date as text in empty cell
+
+
+        
         print("\(steppingArray.count)")
 
         if steppingArray.count > 0 {
