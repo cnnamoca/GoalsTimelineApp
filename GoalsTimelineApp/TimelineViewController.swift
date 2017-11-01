@@ -9,10 +9,11 @@
 import UIKit
 import CoreData
 
-class TimelineViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class TimelineViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var timelineTitleLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    var flowLayout : UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     var timelineArray : Array<Timeline> = Array()
     var timeline : Timeline = Timeline ()
     var startSec : Int = Int ()
@@ -24,6 +25,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         super.viewDidLoad()
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture(gesture:)))
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handleZoomGesture(gesture:)))
+        
         self.collectionView.addGestureRecognizer(longPressGesture)
         timelineTitleLabel.text = timeline.title
         
@@ -45,6 +48,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
 
         
+    }
+    
+    func setupFlowLayout() {
+        
+        flowLayout.itemSize = 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,6 +88,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
+    // MARK: - Gesture Hnadling Functions
+    
     @objc
     func handleLongGesture(gesture: UILongPressGestureRecognizer){
         switch (gesture.state){
@@ -112,6 +122,20 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             break
         }
     }
+    
+    @objc
+    func handleZoomGesture(gesture : UIPinchGestureRecognizer) {
+        switch gesture.state {
+        case UIGestureRecognizerState.began:
+            <#code#>
+        case UIGestureRecognizerState.changed:
+            collectionView.collectionViewLayout.invalidateLayout()
+        default:
+            <#code#>
+        }
+    }
+    
+    
     
     // MARK: - Collection View Data Source
     
