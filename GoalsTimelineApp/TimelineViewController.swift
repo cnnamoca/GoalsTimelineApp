@@ -93,18 +93,17 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
 
         if steppingArray.count > 0 {
             
+            // make vvv into function later
             for step : SteppingStone in steppingArray{
                 if step.dateIndex == Int16(indexPath.row){
-                    var tempStep : SteppingStone = step
                     
                     let timelineCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
-
-                    timelineCell.titleLabel.text = step.title
                     let formatter : DateFormatter = DateFormatter()
                     formatter.dateFormat = "dd-MM-yyyy"
                     let myString : String = formatter.string(from: step.deadline! as Date)
-//                    let mydate : Date = formatter.date(from: myString)
                     timelineCell.dateLabel.text = "\(myString)"
+                    timelineCell.titleLabel.text = step.title
+                    
                     cell = timelineCell
                 }
             }
