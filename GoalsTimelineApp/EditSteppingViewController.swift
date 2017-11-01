@@ -18,6 +18,9 @@ class EditSteppingViewController: UIViewController {
         
     }
     
+    @IBAction func cancelEditing(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     // MARK: - View setup
     func populateFieldsWithExistindData() {
         edtitSteppingStoneTitleView.text = steppingStoneObject.title
