@@ -116,11 +116,16 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         case UIGestureRecognizerState.changed:
             print("changed")
             collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+            let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
+            print("\(indexPath)")
+            let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date )
+            print ("\(indexPathDate)")
             break
             
         case UIGestureRecognizerState.ended:
             print("ended")
             //update cell name
+            
             //update cell below/above as well
             
             self.collectionView.reloadData()
@@ -191,16 +196,19 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         return intDate + 1
     }
     
-    //    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-    //        print("can move")
-    //        return true
-    //    }
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
+//    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+//        print("can move")
+//        return true
+//    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//        print("Starting Index: \(sourceIndexPath.item)")
+//        print("Ending Index: \(destinationIndexPath.item)")
         print("move item \(sourceIndexPath) to \(destinationIndexPath)")
         //update datasource
     }
