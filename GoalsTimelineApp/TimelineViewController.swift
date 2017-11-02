@@ -243,6 +243,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date )
             print ("\(indexPathDate)")
+            
             break
             
         case UIGestureRecognizerState.ended:
@@ -259,11 +260,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
 
             //update cell name
             //update cell below/above as well
-            self.collectionView.reloadData()
+            collectionView.reloadData()
             }
             
             tempStep = nil
-            self.collectionView.reloadData()
+            collectionView.reloadData()
             collectionView.endInteractiveMovement()
                 
 
@@ -291,15 +292,18 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         emptyCell.dateLabel.text = dateString
         print("empty\(dateString)")
         
-//        todaysDate = NSDate()
+        todaysDate = NSDate()
         //USE FOR DEMO
-        todaysDate = NSCalendar.current.date(byAdding: .day, value: 1, to: NSDate() as Date, wrappingComponents: false)! as NSDate
+//        todaysDate = NSCalendar.current.date(byAdding: .day, value: 1, to: NSDate() as Date, wrappingComponents: false)! as NSDate
         //
         
 
         let todayString : String = formatter.string(from: todaysDate as Date)
         if dateString == todayString {
             emptyCell.imageView.image = UIImage(named: "TodayEmptyCell")
+        }
+        else {
+            emptyCell.imageView.image = UIImage(named: "EmptyCell")
         }
 
         cell = emptyCell
