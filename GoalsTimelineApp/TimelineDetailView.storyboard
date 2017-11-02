@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5Tk-sT-Flt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,9 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M06-X9-fHY">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M06-X9-fHY">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Edit Timeline" id="kwN-MY-YPd">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6kR-0R-DSM">
@@ -98,6 +97,8 @@
                         <color key="backgroundColor" white="0.96793295280000002" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8Hz-JG-1gG" firstAttribute="centerX" secondItem="kx2-Uj-yzd" secondAttribute="centerX" id="7J0-Tb-OG5"/>
+                            <constraint firstItem="M06-X9-fHY" firstAttribute="centerX" secondItem="kx2-Uj-yzd" secondAttribute="centerX" id="Cp7-Wd-fAq"/>
+                            <constraint firstItem="M06-X9-fHY" firstAttribute="width" secondItem="M05-rm-sDQ" secondAttribute="width" id="Csc-dz-xjL"/>
                             <constraint firstItem="KH0-d6-2h1" firstAttribute="leading" secondItem="kx2-Uj-yzd" secondAttribute="leading" constant="16" id="EWy-P9-3Vi"/>
                             <constraint firstItem="8Hz-JG-1gG" firstAttribute="width" secondItem="M05-rm-sDQ" secondAttribute="width" id="G3u-dT-z11"/>
                             <constraint firstItem="KH0-d6-2h1" firstAttribute="top" secondItem="8Hz-JG-1gG" secondAttribute="bottom" constant="9" id="Iqa-8E-cU6"/>
@@ -109,6 +110,7 @@
                             <constraint firstItem="JBM-83-W3z" firstAttribute="width" secondItem="PIu-tF-Kb4" secondAttribute="width" id="V89-kx-fOV"/>
                             <constraint firstItem="PIu-tF-Kb4" firstAttribute="top" secondItem="kx2-Uj-yzd" secondAttribute="top" constant="72" id="W66-Ux-Grq"/>
                             <constraint firstItem="PIu-tF-Kb4" firstAttribute="width" secondItem="M05-rm-sDQ" secondAttribute="width" multiplier="0.9" id="dcH-3t-eog"/>
+                            <constraint firstItem="M06-X9-fHY" firstAttribute="top" secondItem="kx2-Uj-yzd" secondAttribute="top" id="kVf-pj-rqz"/>
                             <constraint firstItem="fe0-Mu-5ty" firstAttribute="width" secondItem="M05-rm-sDQ" secondAttribute="width" id="m67-4R-dZT"/>
                             <constraint firstItem="8Hz-JG-1gG" firstAttribute="top" secondItem="jFx-0i-72B" secondAttribute="bottom" constant="9" id="pS4-Dv-97K"/>
                             <constraint firstItem="fe0-Mu-5ty" firstAttribute="top" secondItem="KH0-d6-2h1" secondAttribute="bottom" constant="6" id="so1-yT-Zdl"/>
