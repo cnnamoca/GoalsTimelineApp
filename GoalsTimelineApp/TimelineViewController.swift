@@ -33,6 +33,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.collectionView.addGestureRecognizer(swipeRight)
         
+        let deleteGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleDeleteGesture(gesture:)))
+        deleteGesture.direction = UISwipeGestureRecognizerDirection.left
+        collectionView.addGestureRecognizer(deleteGesture)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +92,29 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     //MARK: GESTURE RECOGNIZERS methods
+    
+    @objc
+    func handleDeleteGesture(gesture: UITapGestureRecognizer) {
+        guard
+            let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
+            else {return}
+        
+        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        let context = persistentContainer.viewContext
+        tempStep = stepIndexDict[indexPath.row]!
+        if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
+            context.delete(tempStep)
+            
+            self.fetchTimelineData()
+
+            collectionView.reloadData()
+            
+        }
+        
+        
+    }
+    
     @objc
     func handleSwipeRight(gesture: UISwipeGestureRecognizer){
         guard
@@ -225,8 +253,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        print("Starting Index: \(sourceIndexPath.item)")
-//        print("Ending Index: \(destinationIndexPath.item)")
         print("move item \(sourceIndexPath) to \(destinationIndexPath)")
         //update datasource
     }
