@@ -43,6 +43,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         deleteGesture.direction = UISwipeGestureRecognizerDirection.left
         collectionView.addGestureRecognizer(deleteGesture)
     
+//        timelineTitleLabel.adjustsFontSizeToFitWidth = true
+//        timelineTitleLabel.minimumScaleFactor=0.8;
+        timelineTitleLabel.sizeToFit()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +66,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
         print("Showing timeline with title: \(String(describing: timeline.title)) ")
         
+        timelineTitleLabel.sizeToFit()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
