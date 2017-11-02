@@ -14,6 +14,7 @@ class EditSteppingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.populateFieldsWithExistindData()
+        print("completion state : \(steppingStoneObject.isCompleted)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

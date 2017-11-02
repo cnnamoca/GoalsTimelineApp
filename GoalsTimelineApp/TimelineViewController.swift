@@ -58,12 +58,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         //Hide navigation bar 
         navigationController?.setNavigationBarHidden(true, animated: true)
         
-        self.fetchTimelineData()
+
 
         startSec = Int((timeline.startDate?.timeIntervalSince(timeline.startDate! as Date))!)
 
         self.fetchSteppingStone()
-
+        self.fetchTimelineData()
+        
         collectionView.reloadData()
         self.updateTimelinetitle()
         print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
@@ -186,7 +187,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         //        let emptyCell : EmptyCollectionViewCell = self.collectionView.cellForItem(at: indexPath!) as! EmptyCollectionViewCell
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
-        
+        tempStep = nil
+
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
             let cell : TimelineCollectionViewCell = (self.collectionView.cellForItem(at: indexPath) as? TimelineCollectionViewCell)!
             tempStep = stepIndexDict[indexPath.row]!
@@ -203,6 +205,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             
             appDelegate.saveContext()
             tempStep = nil
+            fetchTimelineData()
+            fetchSteppingStone()
             collectionView.reloadData()
             
         }
@@ -327,6 +331,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     // set
                     if step.isCompleted == true {
                         timelineCell.imageView.image = UIImage(named: "completedCell")
+                    }
+                    else {
+                        timelineCell.imageView.image = UIImage(named: "CustomCell")
                     }
                     stepIndexDict[indexPath.row] = step
                     
