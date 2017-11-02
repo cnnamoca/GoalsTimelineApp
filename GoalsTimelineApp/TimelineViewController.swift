@@ -128,18 +128,25 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
             let cell : TimelineCollectionViewCell = (self.collectionView.cellForItem(at: indexPath) as? TimelineCollectionViewCell)!
-            cell.imageView.image = UIImage(named: "completedCell")
             tempStep = stepIndexDict[indexPath.row]!
-            tempStep.setValue(true, forKey: "isCompleted")
-            appDelegate.saveContext()
-//            tempStep = nil
-
             
+            if tempStep.isCompleted == false {
+                cell.imageView.image = UIImage(named: "completedCell")
+                tempStep.setValue(true, forKey: "isCompleted")
+                //            tempStep = nil
+            }
+            else {
+                cell.imageView.image = UIImage(named: "CustomCell")
+                tempStep.setValue(false, forKey: "isCompleted")
+            }
+            appDelegate.saveContext()
+            collectionView.reloadData()
             
         }
+    }
         
         //        self.collectionView.cellForItem(at: indexPath!)?.
-    }
+    
     
     @objc
     func handleLongGesture(gesture: UILongPressGestureRecognizer){
