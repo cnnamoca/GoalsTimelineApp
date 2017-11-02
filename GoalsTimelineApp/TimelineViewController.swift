@@ -42,8 +42,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let deleteGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleDeleteGesture(gesture:)))
         deleteGesture.direction = UISwipeGestureRecognizerDirection.left
         collectionView.addGestureRecognizer(deleteGesture)
-        
-        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,8 +58,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         self.fetchSteppingStone()
 
         collectionView.reloadData()
+        self.updateTimelinetitle()
         print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
-
+        print("Showing timeline with title: \(String(describing: timeline.title)) ")
         
     }
     
@@ -77,8 +77,15 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             editSteppingStoneVC.steppingStoneObject = steppingStone
             editSteppingStoneVC.timelineObject = timeline
         }
+        if segue.identifier == "toDetailView" {
+            let timelineDetailVC : TimelineDetailViewController = segue.destination as! TimelineDetailViewController
+
+            timelineDetailVC.timelineObject = timeline
+            
+        }
 
     }
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //TODO: check if steppingstone is not empty
@@ -339,6 +346,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         steppingStoneArray = try! context.fetch(request)
         print ("there are \(steppingStoneArray.count) steppingStones in the array")
 
+    }
+    
+    func updateTimelinetitle() {
+        self.timelineTitleLabel.text = timeline.title
     }
 
     
