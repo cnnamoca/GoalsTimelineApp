@@ -123,9 +123,18 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             else {return}
         //        let cell : TimelineCollectionViewCell = TimelineCollectionViewCell()
         //        let emptyCell : EmptyCollectionViewCell = self.collectionView.cellForItem(at: indexPath!) as! EmptyCollectionViewCell
+        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
             let cell : TimelineCollectionViewCell = (self.collectionView.cellForItem(at: indexPath) as? TimelineCollectionViewCell)!
             cell.imageView.image = UIImage(named: "completedCell")
+            tempStep = stepIndexDict[indexPath.row]!
+            tempStep.setValue(true, forKey: "isCompleted")
+            appDelegate.saveContext()
+//            tempStep = nil
+
+            
             
         }
         
@@ -222,6 +231,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     timelineCell.dateLabel.text = "\(myString)"
                     timelineCell.titleLabel.text = step.title
                     
+                    // set
+                    if step.isCompleted == true {
+                        timelineCell.imageView.image = UIImage(named: "completedCell")
+                    }
                     stepIndexDict[indexPath.row] = step
                     
                     cell = timelineCell
