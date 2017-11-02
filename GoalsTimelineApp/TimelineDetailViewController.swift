@@ -15,7 +15,10 @@ class TimelineDetailViewController: UIViewController {
 
     }
     @IBAction func cancelTimelineEditing(_ sender: UIBarButtonItem) {
-        @IBAction func saveTimelineChanges(_ sender: UIBarButtonItem) {
-        }
     }
+    
+    @IBAction func saveTimelineChanges(_ sender: UIBarButtonItem) {
+         self.dismiss(animated: true, completion: nil)
+        }
+    
 }
