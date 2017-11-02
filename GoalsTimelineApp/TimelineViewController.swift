@@ -130,16 +130,18 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let cell : TimelineCollectionViewCell = (self.collectionView.cellForItem(at: indexPath) as? TimelineCollectionViewCell)!
             tempStep = stepIndexDict[indexPath.row]!
             
-            if tempStep.isCompleted == false {
+            if tempStep!.isCompleted == false {
                 cell.imageView.image = UIImage(named: "completedCell")
-                tempStep.setValue(true, forKey: "isCompleted")
-                //            tempStep = nil
+                tempStep!.setValue(true, forKey: "isCompleted")
+
             }
             else {
                 cell.imageView.image = UIImage(named: "CustomCell")
-                tempStep.setValue(false, forKey: "isCompleted")
+                tempStep!.setValue(false, forKey: "isCompleted")
             }
+            
             appDelegate.saveContext()
+            tempStep = nil
             collectionView.reloadData()
             
         }
