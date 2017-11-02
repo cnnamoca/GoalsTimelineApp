@@ -44,8 +44,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         collectionView.addGestureRecognizer(deleteGesture)
         
         let addStepGesture = UITapGestureRecognizer(target: self, action: #selector(handleAddStepGesture(gesture:)))
-        deleteGesture.numberOfTouchesRequired = 2
+        addStepGesture.numberOfTapsRequired = 2
         collectionView.addGestureRecognizer(addStepGesture)
+        
+        let editStepGesture = UITapGestureRecognizer(target: self, action: #selector(handleEditStepGesture(gesture:)))
+        collectionView.addGestureRecognizer(editStepGesture)
     
     }
     
@@ -99,35 +102,58 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     }
 
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //TODO: check if steppingstone is not empty
-    
-        // lazy date comparison. update to NSCalendar
-        let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
-        let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        let dateString : String = formatter.string(from: indexPathDate as Date)
-        
-        let steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
-        for step : SteppingStone in steppingArray{
-            let stepDateString : String = formatter.string(from: step.deadline! as Date)
-            if stepDateString == dateString {
-                performSegue(withIdentifier: "toEditSteppingStone", sender: step)
-            }
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        //TODO: check if steppingstone is not empty
+//
+//        // lazy date comparison. update to NSCalendar
+//        let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
+//        let formatter : DateFormatter = DateFormatter()
+//        formatter.dateFormat = "dd-MM-yyyy"
+//        let dateString : String = formatter.string(from: indexPathDate as Date)
+//
+//        let steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
+//        for step : SteppingStone in steppingArray{
+//            let stepDateString : String = formatter.string(from: step.deadline! as Date)
+//            if stepDateString == dateString {
+//                performSegue(withIdentifier: "toEditSteppingStone", sender: step)
+//            }
+//        }
+//    }
     
     //MARK: GESTURE RECOGNIZERS methods
     
     
-    
+    @objc
+    func handleEditStepGesture(gesture: UITapGestureRecognizer) {
+        guard
+            let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
+            else {return}
+        if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
+            let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
+            let formatter : DateFormatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yyyy"
+            let dateString : String = formatter.string(from: indexPathDate as Date)
+            
+            let steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
+            for step : SteppingStone in steppingArray{
+                let stepDateString : String = formatter.string(from: step.deadline! as Date)
+                if stepDateString == dateString {
+                    performSegue(withIdentifier: "toEditSteppingStone", sender: step)
+                }
+            }
+        }
+    }
+            
     
     @objc
     func handleAddStepGesture(gesture: UITapGestureRecognizer) {
         guard
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             else {return}
-        
+        if collectionView.cellForItem(at: indexPath) is EmptyCollectionViewCell {
+            let indexPathDate = Date.init(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date)
+            performSegue(withIdentifier: "tapAddStep", sender: indexPathDate)
+        }
     }
     
     @objc
@@ -142,14 +168,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         tempStep = stepIndexDict[indexPath.row]!
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
             context.delete(tempStep!)
-            
+            tempStep = nil
+
             self.fetchTimelineData()
 
             collectionView.reloadData()
             
         }
-        
-        
     }
     
     @objc
@@ -182,9 +207,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             
         }
     }
-        
-        //        self.collectionView.cellForItem(at: indexPath!)?.
-    
     
     @objc
     func handleLongGesture(gesture: UILongPressGestureRecognizer){
