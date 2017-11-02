@@ -17,7 +17,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var timeline : Timeline = Timeline ()
     var startSec : Int = Int ()
     var stepIndexDict : Dictionary <Int , SteppingStone> = [Int : SteppingStone]()
-    var tempStep : SteppingStone = SteppingStone()
+    var tempStep : SteppingStone? = nil
 
     
     var steppingStoneArray : Array<SteppingStone> = Array()
@@ -105,7 +105,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let context = persistentContainer.viewContext
         tempStep = stepIndexDict[indexPath.row]!
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
-            context.delete(tempStep)
+            context.delete(tempStep!)
             
             self.fetchTimelineData()
 
@@ -146,6 +146,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                 let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
                 else { break }
             
+            if self.collectionView.cellForItem(at: indexPath) is EmptyCollectionViewCell{
+                collectionView.cancelInteractiveMovement()
+                break
+            }
+            
             let began = collectionView.beginInteractiveMovementForItem(at: indexPath)
             print("began \(indexPath): \(began)")
             tempStep = stepIndexDict[indexPath.row]!
@@ -162,7 +167,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         case UIGestureRecognizerState.ended:
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
-            tempStep.setValue(indexPathDate, forKey:"deadline" )
+            
+            if tempStep != nil {
+            tempStep?.setValue(indexPathDate, forKey:"deadline" )
             print("ended")
             appDelegate.saveContext()
             
@@ -172,8 +179,12 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             //update cell name
             //update cell below/above as well
             self.collectionView.reloadData()
-
+            }
+            
+            tempStep = nil
+            self.collectionView.reloadData()
             collectionView.endInteractiveMovement()
+                
 
             break
             
