@@ -126,7 +126,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             print("changed")
             collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
-            print("\(indexPath)")
             let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date )
             print ("\(indexPathDate)")
             break
