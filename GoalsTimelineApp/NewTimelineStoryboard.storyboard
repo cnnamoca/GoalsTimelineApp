@@ -115,6 +115,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add New Timeline" id="zcZ-Be-4Ba"/>
                     <connections>
+                        <outlet property="addNewTimelineButton" destination="EDQ-dy-6aL" id="JQU-eH-44Z"/>
                         <outlet property="endDatePicker" destination="kwl-tV-i1Y" id="nMm-lD-Jn8"/>
                         <outlet property="newTimelineNotesView" destination="SNJ-5m-ehn" id="mQg-6P-b0d"/>
                         <outlet property="newTimelineTitleView" destination="sLg-9p-zSp" id="iFv-vQ-Al6"/>

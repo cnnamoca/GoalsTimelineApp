@@ -25,7 +25,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="Mdu-0s-JQC">
-                                <rect key="frame" x="0.0" y="338" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="324" width="375" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="iNF-PH-NV9"/>
                                 </constraints>
@@ -34,7 +34,7 @@
                                 </date>
                             </datePicker>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GkN-vZ-2Nq">
-                                <rect key="frame" x="19" y="180" width="337.5" height="150"/>
+                                <rect key="frame" x="19" y="166" width="337.5" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="cQo-1a-WWB"/>
@@ -66,7 +66,7 @@
                             <constraint firstItem="7M0-Zn-6qs" firstAttribute="top" secondItem="2tL-Ff-wYk" secondAttribute="bottom" constant="56" id="4xV-ar-jDL"/>
                             <constraint firstItem="2tL-Ff-wYk" firstAttribute="centerX" secondItem="CLe-1F-NTA" secondAttribute="centerX" id="6eF-k1-JXp"/>
                             <constraint firstItem="Mdu-0s-JQC" firstAttribute="centerX" secondItem="CLe-1F-NTA" secondAttribute="centerX" id="C3J-ae-Gdh"/>
-                            <constraint firstItem="GkN-vZ-2Nq" firstAttribute="top" secondItem="7M0-Zn-6qs" secondAttribute="bottom" constant="30" id="Suv-QY-gno"/>
+                            <constraint firstItem="GkN-vZ-2Nq" firstAttribute="top" secondItem="7M0-Zn-6qs" secondAttribute="bottom" constant="16" id="Suv-QY-gno"/>
                             <constraint firstItem="GkN-vZ-2Nq" firstAttribute="width" secondItem="Fjt-05-AwQ" secondAttribute="width" multiplier="0.9" id="TcA-gm-LYO"/>
                             <constraint firstItem="GkN-vZ-2Nq" firstAttribute="centerX" secondItem="CLe-1F-NTA" secondAttribute="centerX" id="Y8T-oB-p4o"/>
                             <constraint firstItem="CLe-1F-NTA" firstAttribute="top" secondItem="2tL-Ff-wYk" secondAttribute="top" id="ZnT-iJ-hr3"/>
