@@ -18,9 +18,15 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var startSec : Int = Int ()
     var stepIndexDict : Dictionary <Int , SteppingStone> = [Int : SteppingStone]()
     var tempStep : SteppingStone? = nil
+    
+    var todaysDate:NSDate = NSDate()
 
     
     var steppingStoneArray : Array<SteppingStone> = Array()
+    
+    //
+    
+    //
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -227,8 +233,19 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let dateString : String = formatter.string(from: indexPathDate as Date)
         emptyCell.dateLabel.text = dateString
         print("empty\(dateString)")
-        cell = emptyCell
+        
+//        todaysDate = NSDate()
+        //USE FOR DEMO
+        todaysDate = NSCalendar.current.date(byAdding: .day, value: 1, to: NSDate() as Date, wrappingComponents: false)! as NSDate
+        //
+        
 
+        let todayString : String = formatter.string(from: todaysDate as Date)
+        if dateString == todayString {
+            emptyCell.imageView.image = UIImage(named: "TodayEmptyCell")
+        }
+
+        cell = emptyCell
 
 
         
@@ -250,6 +267,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     let myString : String = formatter.string(from: step.deadline! as Date)
                     timelineCell.dateLabel.text = "\(myString)"
                     timelineCell.titleLabel.text = step.title
+                    
+                    if dateString == todayString {
+                        timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
+                    }
                     
                     // set
                     if step.isCompleted == true {
