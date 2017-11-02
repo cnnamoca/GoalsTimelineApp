@@ -42,6 +42,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let deleteGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleDeleteGesture(gesture:)))
         deleteGesture.direction = UISwipeGestureRecognizerDirection.left
         collectionView.addGestureRecognizer(deleteGesture)
+
         
         let addStepGesture = UITapGestureRecognizer(target: self, action: #selector(handleAddStepGesture(gesture:)))
         addStepGesture.numberOfTapsRequired = 2
@@ -49,7 +50,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let editStepGesture = UITapGestureRecognizer(target: self, action: #selector(handleEditStepGesture(gesture:)))
         collectionView.addGestureRecognizer(editStepGesture)
-    
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
