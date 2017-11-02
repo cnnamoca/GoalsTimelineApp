@@ -127,8 +127,11 @@
                                     <segue destination="ffX-Ci-OfW" kind="show" identifier="goHome" id="1RG-XD-Wo2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNl-w5-qPU">
-                                <rect key="frame" x="16" y="43" width="122.5" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UNl-w5-qPU">
+                                <rect key="frame" x="16" y="20" width="296" height="106"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="296" id="6af-pe-cO5"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -160,6 +163,7 @@
                             <constraint firstItem="xgh-Gt-7Tx" firstAttribute="top" secondItem="x6U-YO-FWA" secondAttribute="bottom" constant="45" id="5ZE-sD-Qdl"/>
                             <constraint firstItem="RuF-pY-WJF" firstAttribute="top" secondItem="Tt8-54-Bk2" secondAttribute="top" id="Dwn-rI-C8A"/>
                             <constraint firstItem="JJW-DV-MNj" firstAttribute="top" secondItem="RuF-pY-WJF" secondAttribute="bottom" constant="8" symbolic="YES" id="JJX-V4-Y5F"/>
+                            <constraint firstItem="Tt8-54-Bk2" firstAttribute="trailing" secondItem="UNl-w5-qPU" secondAttribute="trailing" constant="63" id="Jon-LA-tbL"/>
                             <constraint firstItem="xgh-Gt-7Tx" firstAttribute="bottom" secondItem="Tt8-54-Bk2" secondAttribute="bottom" id="KWH-a2-nOO"/>
                             <constraint firstItem="UNl-w5-qPU" firstAttribute="leading" secondItem="tRw-Qm-idP" secondAttribute="leadingMargin" id="Mdq-0R-GkS"/>
                             <constraint firstAttribute="trailing" secondItem="xgh-Gt-7Tx" secondAttribute="trailing" id="NCa-yW-Vej"/>

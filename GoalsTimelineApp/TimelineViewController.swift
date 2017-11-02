@@ -42,7 +42,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let deleteGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleDeleteGesture(gesture:)))
         deleteGesture.direction = UISwipeGestureRecognizerDirection.left
         collectionView.addGestureRecognizer(deleteGesture)
-    
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
