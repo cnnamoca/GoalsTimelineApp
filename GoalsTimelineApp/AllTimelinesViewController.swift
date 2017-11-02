@@ -23,6 +23,8 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.fetchTimelineData()
+        timelineTableView.reloadData()
+
         
     }
     
@@ -48,6 +50,27 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
             let selectedRow = indexPath.row
             let timelineVC : TimelineViewController = segue.destination as! TimelineViewController
             timelineVC.timeline = timelineArray[selectedRow]
+        }
+    }
+    
+    //MARK: - Delete Timeline
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        
+        let context : NSManagedObjectContext = persistentContainer.viewContext
+        
+        let timeline = timelineArray[indexPath.row]
+        
+        if editingStyle == .delete {
+            
+            // remove the item from Core Data
+            context.delete(timeline)
+            appDelegate.saveContext()
+            self.fetchTimelineData()
+
+            timelineTableView.reloadData()
         }
     }
     
