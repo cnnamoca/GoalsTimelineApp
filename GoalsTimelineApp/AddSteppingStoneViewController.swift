@@ -101,6 +101,7 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
     //Set start daypicker default value to today, don't let select date in the past
     func setupDatePicker() {
         steppingStoneDueDatePicker.minimumDate = NSDate() as Date
+        steppingStoneDueDatePicker.maximumDate = (timelineObject.endDate! as Date)
     }
     
     

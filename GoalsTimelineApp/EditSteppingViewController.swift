@@ -7,12 +7,18 @@ class EditSteppingViewController: UIViewController {
     @IBOutlet weak var editSteppingStoneNotesView: UITextView!
     @IBOutlet weak var editSteppingStoneDeadline: UIDatePicker!
     var steppingStoneObject : SteppingStone = SteppingStone ()
+    var timelineObject : Timeline = Timeline ()
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.populateFieldsWithExistindData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupDatePicker()
+        
     }
     
     @IBAction func saveSteppingStoneChanges(_ sender: UIBarButtonItem) {
@@ -33,6 +39,12 @@ class EditSteppingViewController: UIViewController {
         edtitSteppingStoneTitleView.text = steppingStoneObject.title
         editSteppingStoneNotesView.text = steppingStoneObject.info
         editSteppingStoneDeadline.date = steppingStoneObject.deadline! as Date
+    }
+    
+    //Set start daypicker default value to today, don't let select date in the past
+    func setupDatePicker() {
+        editSteppingStoneDeadline.minimumDate = NSDate() as Date
+        editSteppingStoneDeadline.maximumDate = (timelineObject.endDate! as Date)
     }
     
 }

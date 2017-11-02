@@ -69,6 +69,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             
             let steppingStone : SteppingStone = sender as! SteppingStone
             editSteppingStoneVC.steppingStoneObject = steppingStone
+            editSteppingStoneVC.timelineObject = timeline
         }
 
     }
