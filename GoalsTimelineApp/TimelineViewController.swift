@@ -205,7 +205,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let emptyCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
         let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
         let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
+        formatter.dateFormat = "EEEE, MMM d, yyyy"
         let dateString : String = formatter.string(from: indexPathDate as Date)
         emptyCell.dateLabel.text = dateString
         print("empty\(dateString)")
