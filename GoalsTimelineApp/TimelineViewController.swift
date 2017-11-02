@@ -71,6 +71,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             editSteppingStoneVC.steppingStoneObject = steppingStone
             editSteppingStoneVC.timelineObject = timeline
         }
+        if segue.identifier == "toDetailView" {
+            let timelineDetailVC : TimelineDetailViewController = segue.destination as! TimelineDetailViewController
+            
+//            let timeline : Timeline = sender as! Timeline
+            timelineDetailVC.timelineObject = timeline
+            
+        }
 
     }
     

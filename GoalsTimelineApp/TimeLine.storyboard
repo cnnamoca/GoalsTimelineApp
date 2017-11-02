@@ -141,6 +141,7 @@
                                 <state key="normal" backgroundImage="EditButton"/>
                                 <connections>
                                     <action selector="editButton:" destination="EQI-Od-2co" eventType="touchUpInside" id="O49-gI-ajn"/>
+                                    <segue destination="vEX-1v-EUG" kind="presentation" identifier="toDetailView" id="rbF-Kx-Jqk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6U-YO-FWA">
@@ -177,7 +178,6 @@
                         <outlet property="collectionView" destination="xgh-Gt-7Tx" id="Tzn-Ae-uE1"/>
                         <outlet property="timelineTitleLabel" destination="UNl-w5-qPU" id="nx2-mu-Rb3"/>
                         <segue destination="165-ox-gWh" kind="presentation" identifier="toEditSteppingStone" id="wP2-zP-ag4"/>
-                        <segue destination="vEX-1v-EUG" kind="presentation" id="4xf-2F-KqT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znk-jx-zSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
