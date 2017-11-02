@@ -16,6 +16,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var timelineArray : Array<Timeline> = Array()
     var timeline : Timeline = Timeline ()
     var startSec : Int = Int ()
+    var stepIndexDict : Dictionary <Int , SteppingStone> = [Int : SteppingStone]()
+    var tempStep : SteppingStone = SteppingStone()
 
     
     var steppingStoneArray : Array<SteppingStone> = Array()
@@ -103,6 +105,12 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @objc
     func handleLongGesture(gesture: UILongPressGestureRecognizer){
+        
+        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        
+//        var tempStep : SteppingStone = SteppingStone ()//(context: persistentContainer.viewContext)
+        
         switch (gesture.state){
         case UIGestureRecognizerState.began:
             guard
@@ -111,6 +119,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             
             let began = collectionView.beginInteractiveMovementForItem(at: indexPath)
             print("began \(indexPath): \(began)")
+            tempStep = stepIndexDict[indexPath.row]!
             break
             
         case UIGestureRecognizerState.changed:
@@ -123,13 +132,21 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             break
             
         case UIGestureRecognizerState.ended:
+            let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
+            let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
+            tempStep.setValue(indexPathDate, forKey:"deadline" )
             print("ended")
+            appDelegate.saveContext()
+            
+            self.fetchSteppingStone()
+            self.fetchTimelineData()
+
             //update cell name
-            
             //update cell below/above as well
-            
             self.collectionView.reloadData()
+
             collectionView.endInteractiveMovement()
+
             break
             
         default:
@@ -177,6 +194,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     timelineCell.dateLabel.text = "\(myString)"
                     timelineCell.titleLabel.text = step.title
                     
+                    stepIndexDict[indexPath.row] = step
+                    
                     cell = timelineCell
                 }
             }
@@ -200,10 +219,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         return 1
     }
     
-//    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-//        print("can move")
-//        return true
-//    }
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        print("can move")
+        return true
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -238,6 +257,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let context : NSManagedObjectContext = persistentContainer.viewContext
         let request : NSFetchRequest = SteppingStone.fetchRequest()
         steppingStoneArray = try! context.fetch(request)
+        print ("there are \(steppingStoneArray.count) steppingStones in the array")
+
     }
 
     
