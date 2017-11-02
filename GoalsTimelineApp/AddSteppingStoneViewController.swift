@@ -20,6 +20,8 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var steppingStoneDueDatePicker: UIDatePicker!
     var timelineObject : Timeline = Timeline ()
     var delegate : SteppingStoneDelegate?
+    var initialDate : Date?
+
     
     
     override func viewDidLoad() {
@@ -102,6 +104,9 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
     func setupDatePicker() {
         steppingStoneDueDatePicker.minimumDate = NSDate() as Date
         steppingStoneDueDatePicker.maximumDate = (timelineObject.endDate! as Date)
+        if let date = self.initialDate {
+            steppingStoneDueDatePicker.date = date
+        }
     }
     
     
