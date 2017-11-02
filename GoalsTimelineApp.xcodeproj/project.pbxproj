@@ -10,6 +10,8 @@
 		0D57D9EB1FA7F4CE00D674EF /* AllTimelinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57D9E81FA7F4CD00D674EF /* AllTimelinesViewController.swift */; };
 		0D57D9EC1FA7F4CE00D674EF /* NewTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57D9E91FA7F4CD00D674EF /* NewTimelineViewController.swift */; };
 		0D57D9ED1FA7F4CE00D674EF /* NewTimelineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D57D9EA1FA7F4CE00D674EF /* NewTimelineStoryboard.storyboard */; };
+		0D7F850C1FABCBF2002F5F82 /* TimelineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F850A1FABCBF1002F5F82 /* TimelineDetailViewController.swift */; };
+		0D7F850D1FABCBF2002F5F82 /* TimelineDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F850B1FABCBF1002F5F82 /* TimelineDetailView.storyboard */; };
 		0DEFC0EB1FA8113700C3363B /* Timeline+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFC0E71FA8113700C3363B /* Timeline+CoreDataProperties.swift */; };
 		0DEFC0EC1FA8113700C3363B /* Timeline+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFC0E81FA8113700C3363B /* Timeline+CoreDataClass.swift */; };
 		0DEFC0EE1FA8135B00C3363B /* TimelineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFC0ED1FA8135B00C3363B /* TimelineCollectionViewCell.swift */; };
@@ -35,6 +37,8 @@
 		0D57D9E91FA7F4CD00D674EF /* NewTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTimelineViewController.swift; sourceTree = "<group>"; };
 		0D57D9EA1FA7F4CE00D674EF /* NewTimelineStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewTimelineStoryboard.storyboard; sourceTree = "<group>"; };
 		0D57D9F41FA808B500D674EF /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		0D7F850A1FABCBF1002F5F82 /* TimelineDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineDetailViewController.swift; sourceTree = "<group>"; };
+		0D7F850B1FABCBF1002F5F82 /* TimelineDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimelineDetailView.storyboard; sourceTree = "<group>"; };
 		0DEFC0E71FA8113700C3363B /* Timeline+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timeline+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0DEFC0E81FA8113700C3363B /* Timeline+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timeline+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0DEFC0ED1FA8135B00C3363B /* TimelineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		E63576AF1FA7C7EB006CABDA /* GoalsTimelineApp */ = {
 			isa = PBXGroup;
 			children = (
+				0D7F850B1FABCBF1002F5F82 /* TimelineDetailView.storyboard */,
+				0D7F850A1FABCBF1002F5F82 /* TimelineDetailViewController.swift */,
 				E649606E1FA94FEA0093A1E9 /* EditSteppingStone.storyboard */,
 				E649606D1FA94FEA0093A1E9 /* EditSteppingViewController.swift */,
 				E64960711FA958B00093A1E9 /* SteppingStone+CoreDataClass.swift */,
@@ -181,6 +187,7 @@
 			files = (
 				E63576BE1FA7C7EB006CABDA /* LaunchScreen.storyboard in Resources */,
 				E63576BB1FA7C7EB006CABDA /* Assets.xcassets in Resources */,
+				0D7F850D1FABCBF2002F5F82 /* TimelineDetailView.storyboard in Resources */,
 				0D57D9ED1FA7F4CE00D674EF /* NewTimelineStoryboard.storyboard in Resources */,
 				0DEFC0F31FA8153400C3363B /* TimeLine.storyboard in Resources */,
 				E64960701FA94FEA0093A1E9 /* EditSteppingStone.storyboard in Resources */,
@@ -205,6 +212,7 @@
 				E64960731FA958B00093A1E9 /* SteppingStone+CoreDataClass.swift in Sources */,
 				0DEFC0EC1FA8113700C3363B /* Timeline+CoreDataClass.swift in Sources */,
 				E64960741FA958B00093A1E9 /* SteppingStone+CoreDataProperties.swift in Sources */,
+				0D7F850C1FABCBF2002F5F82 /* TimelineDetailViewController.swift in Sources */,
 				E649606F1FA94FEA0093A1E9 /* EditSteppingViewController.swift in Sources */,
 				E63576B11FA7C7EB006CABDA /* AppDelegate.swift in Sources */,
 				0DEFC0EE1FA8135B00C3363B /* TimelineCollectionViewCell.swift in Sources */,

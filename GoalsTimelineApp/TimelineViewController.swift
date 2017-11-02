@@ -42,6 +42,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let deleteGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleDeleteGesture(gesture:)))
         deleteGesture.direction = UISwipeGestureRecognizerDirection.left
         collectionView.addGestureRecognizer(deleteGesture)
+        
+        let addStepGesture = UITapGestureRecognizer(target: self, action: #selector(handleAddStepGesture(gesture:)))
+        deleteGesture.numberOfTouchesRequired = 2
+        collectionView.addGestureRecognizer(addStepGesture)
     
     }
     
@@ -70,6 +74,14 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let addSteppingStoneVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
         addSteppingStoneVC.timelineObject = timeline
         }
+        
+        if segue.identifier == "tapAddStep" {
+            let date = sender as! Date
+            let tapAddStepVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
+            tapAddStepVC.timelineObject = timeline
+            tapAddStepVC.initialDate = date
+        }
+        
         if segue.identifier == "toEditSteppingStone" {
             let editSteppingStoneVC: EditSteppingViewController = segue.destination as! EditSteppingViewController
             
@@ -106,6 +118,17 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     //MARK: GESTURE RECOGNIZERS methods
+    
+    
+    
+    
+    @objc
+    func handleAddStepGesture(gesture: UITapGestureRecognizer) {
+        guard
+            let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
+            else {return}
+        
+    }
     
     @objc
     func handleDeleteGesture(gesture: UITapGestureRecognizer) {
