@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,7 +44,7 @@
                                                     <rect key="frame" x="10" y="-7" width="280" height="114"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSi-cu-I9f">
-                                                    <rect key="frame" x="48" y="66" width="42" height="21"/>
+                                                    <rect key="frame" x="64" y="66" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="3ti-ra-KAk"/>
                                                     </constraints>
@@ -53,7 +53,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gn7-nA-dSE">
-                                                    <rect key="frame" x="42" y="0.0" width="254" height="58"/>
+                                                    <rect key="frame" x="64" y="20" width="216" height="38"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                             <constraint firstAttribute="bottom" secondItem="wC2-n4-pwt" secondAttribute="bottom" constant="-7" id="VEd-Nr-AyV"/>
                                             <constraint firstItem="hSi-cu-I9f" firstAttribute="top" secondItem="gn7-nA-dSE" secondAttribute="bottom" constant="8" symbolic="YES" id="XA2-we-UQ8"/>
                                             <constraint firstAttribute="trailing" secondItem="wC2-n4-pwt" secondAttribute="trailing" constant="10" id="blD-dY-4kJ"/>
-                                            <constraint firstItem="gn7-nA-dSE" firstAttribute="leading" secondItem="97q-fm-Tz6" secondAttribute="leadingMargin" constant="42" id="t7R-3k-nIx"/>
+                                            <constraint firstItem="gn7-nA-dSE" firstAttribute="leading" secondItem="97q-fm-Tz6" secondAttribute="leadingMargin" constant="48" id="t7R-3k-nIx"/>
                                         </constraints>
                                         <size key="customSize" width="300" height="100"/>
                                         <connections>
