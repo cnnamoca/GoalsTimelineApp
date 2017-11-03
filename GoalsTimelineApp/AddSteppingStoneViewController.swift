@@ -22,20 +22,12 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
     var delegate : SteppingStoneDelegate?
     var initialDate : Date?
 
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTextfieldsView()
         self.setupDatePicker()
-
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     @IBAction func addSteppingStoneClicked(_ sender: UIBarButtonItem) {
         
@@ -52,12 +44,9 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
         let intDate = Int(dateDifference)/86400
         
         newSteppingStone.dateIndex = Int16(intDate)
-        
         timelineObject.addToSteppingStones(newSteppingStone)
         
-        
         appDelegate.saveContext()
-        
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -73,8 +62,6 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
         steppingStoneNotes.delegate = self
         steppingStoneNotes.textColor = UIColor.lightGray
         steppingStoneNotes.text = "Notes"
-        
-        
     }
     
     //Remove "fake" placeholder when uset taps on textview
@@ -108,8 +95,5 @@ class AddSteppingStoneViewController: UIViewController, UITextViewDelegate {
             steppingStoneDueDatePicker.date = date
         }
     }
-    
-    
-
 
 }
