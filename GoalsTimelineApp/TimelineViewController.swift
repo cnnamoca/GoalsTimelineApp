@@ -240,9 +240,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             print("changed")
             collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
-            let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date )
-            print ("\(indexPathDate)")
-            
+            if indexPath != nil {
+                let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date )
+                
+                print ("\(indexPathDate)")
+            }
             // breaks if goes beyond
             //need to fix
             
@@ -250,21 +252,22 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             
         case UIGestureRecognizerState.ended:
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
-            let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
-            
-            if tempStep != nil {
-            tempStep?.setValue(indexPathDate, forKey:"deadline" )
-            print("ended")
-            appDelegate.saveContext()
-            
-            self.fetchSteppingStone()
-            self.fetchTimelineData()
-
-            //update cell name
-            //update cell below/above as well
-            collectionView.reloadData()
+            if indexPath != nil{
+                let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
+                
+                if tempStep != nil {
+                    tempStep?.setValue(indexPathDate, forKey:"deadline" )
+                    print("ended")
+                    appDelegate.saveContext()
+                    
+                    self.fetchSteppingStone()
+                    self.fetchTimelineData()
+                    
+                    //update cell name
+                    //update cell below/above as well
+                    collectionView.reloadData()
+                }
             }
-            
             tempStep = nil
             collectionView.reloadData()
             collectionView.endInteractiveMovement()
