@@ -24,8 +24,6 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
         super.viewWillAppear(true)
         self.fetchTimelineData()
         timelineTableView.reloadData()
-
-        
     }
     
     
@@ -39,10 +37,8 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
         let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "timelineCell" , for: indexPath)
         let timeline : Timeline = self.timelineArray[indexPath.row]
         cell.textLabel?.text = timeline.title
-//        cell.detailTextLabel?.text =
-        
-        return cell
     
+        return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -85,7 +81,5 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
         let request : NSFetchRequest = Timeline.fetchRequest()
         timelineArray = try! context.fetch(request)
         print ("there are \(timelineArray.count) items in the array")
-        
     }
-    
 }
