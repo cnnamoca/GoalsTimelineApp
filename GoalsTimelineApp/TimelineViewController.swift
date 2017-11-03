@@ -251,6 +251,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             }
             tempStep = stepIndexDict[indexPath.row]!
             tempIndex = indexPath
+            
+            collectionView.beginInteractiveMovementForItem(at: indexPath)
+            
             break
             
         case UIGestureRecognizerState.changed:
