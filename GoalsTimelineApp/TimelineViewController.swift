@@ -100,12 +100,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     cell = timelineCell
                 }
             }
-            
         }
         
         
         return cell
-        
     }
     
     
@@ -129,15 +127,17 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        
-        return true
-    }
-    
-    
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+//        
+//        return true
+//    }
+    
+    
+
     
     // MARK: Prepare for segue
     
