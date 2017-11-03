@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TimelineViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class TimelineViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var timelineTitleLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,6 +20,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var tempStep : SteppingStone? = nil
     
     var todaysDate:NSDate = NSDate()
+
 
     
     var steppingStoneArray : Array<SteppingStone> = Array()
@@ -50,8 +51,12 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let editStepGesture = UITapGestureRecognizer(target: self, action: #selector(handleEditStepGesture(gesture:)))
         collectionView.addGestureRecognizer(editStepGesture)
+        
+        
 
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -244,6 +249,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date )
             print ("\(indexPathDate)")
             
+            // breaks if goes beyond
+            //need to fix
+            
             break
             
         case UIGestureRecognizerState.ended:
@@ -360,6 +368,15 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         print("dates \(intDate)")
         return intDate + 1
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        let footerView = FooterCollectionReusableView()
+        
+        let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Footer", for: indexPath) as! FooterCollectionReusableView
+        
+        return footerView
+    }
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
