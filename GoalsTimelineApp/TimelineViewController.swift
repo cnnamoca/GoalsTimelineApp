@@ -16,6 +16,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var todaysDate:NSDate = NSDate()
     let dateFormatter : DateFormatter = DateFormatter()
 
+    @IBAction func homeButton(_ sender: Any) {
+    }
+    @IBAction func editButton(_ sender: Any) {
+    }
+    @IBAction func addButton(_ sender: Any) {
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
