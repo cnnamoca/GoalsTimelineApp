@@ -71,7 +71,7 @@
 		0DEFC0E81FA8113700C3363B /* Timeline+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timeline+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0DEFC0ED1FA8135B00C3363B /* TimelineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCollectionViewCell.swift; sourceTree = "<group>"; };
 		0DEFC0F21FA8151E00C3363B /* TimeLine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeLine.storyboard; sourceTree = "<group>"; };
-		E63576AD1FA7C7EB006CABDA /* GoalsTimelineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalsTimelineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E63576AD1FA7C7EB006CABDA /* PlanFam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlanFam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E63576B01FA7C7EB006CABDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E63576B51FA7C7EB006CABDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E63576B81FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoalsTimelineApp.xcdatamodel; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		E63576AE1FA7C7EB006CABDA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E63576AD1FA7C7EB006CABDA /* GoalsTimelineApp.app */,
+				E63576AD1FA7C7EB006CABDA /* PlanFam.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,7 +206,7 @@
 			);
 			name = GoalsTimelineApp;
 			productName = GoalsTimelineApp;
-			productReference = E63576AD1FA7C7EB006CABDA /* GoalsTimelineApp.app */;
+			productReference = E63576AD1FA7C7EB006CABDA /* PlanFam.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -424,7 +424,7 @@
 				INFOPLIST_FILE = GoalsTimelineApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = carlonamoca.GoalsTimelineApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PlanFam;
 				SWIFT_OBJC_BRIDGING_HEADER = "GoalsTimelineApp/GoalsTimelineApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -441,7 +441,7 @@
 				INFOPLIST_FILE = GoalsTimelineApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = carlonamoca.GoalsTimelineApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PlanFam;
 				SWIFT_OBJC_BRIDGING_HEADER = "GoalsTimelineApp/GoalsTimelineApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
