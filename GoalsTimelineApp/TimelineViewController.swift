@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TimelineViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class TimelineViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var timelineTitleLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,6 +20,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var tempStep : SteppingStone? = nil
     
     var todaysDate:NSDate = NSDate()
+
 
     
     var steppingStoneArray : Array<SteppingStone> = Array()
@@ -50,8 +51,12 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let editStepGesture = UITapGestureRecognizer(target: self, action: #selector(handleEditStepGesture(gesture:)))
         collectionView.addGestureRecognizer(editStepGesture)
+        
+        
 
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -102,25 +107,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         }
 
     }
-
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        //TODO: check if steppingstone is not empty
-//
-//        // lazy date comparison. update to NSCalendar
-//        let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
-//        let formatter : DateFormatter = DateFormatter()
-//        formatter.dateFormat = "dd-MM-yyyy"
-//        let dateString : String = formatter.string(from: indexPathDate as Date)
-//
-//        let steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
-//        for step : SteppingStone in steppingArray{
-//            let stepDateString : String = formatter.string(from: step.deadline! as Date)
-//            if stepDateString == dateString {
-//                performSegue(withIdentifier: "toEditSteppingStone", sender: step)
-//            }
-//        }
-//    }
     
     //MARK: GESTURE RECOGNIZERS methods
     
@@ -257,6 +243,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date )
             print ("\(indexPathDate)")
             
+            // breaks if goes beyond
+            //need to fix
+            
             break
             
         case UIGestureRecognizerState.ended:
@@ -342,17 +331,20 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     timelineCell.dateLabel.text = "\(myString)"
                     timelineCell.titleLabel.text = step.title
                     
-                    if dateString == todayString {
-                        timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
+                    if dateString == todayString && step.isCompleted == true {
+                        timelineCell.imageView.image = UIImage(named: "TodayCompletedCell")
                     }
-                    
-                    // set
-                    if step.isCompleted == true {
+                    else if dateString != todayString && step.isCompleted == true {
                         timelineCell.imageView.image = UIImage(named: "completedCell")
                     }
-                    else {
+                    else if dateString == todayString && step.isCompleted == false {
+                        timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
+                    }
+                    else if dateString != todayString && step.isCompleted == false {
                         timelineCell.imageView.image = UIImage(named: "CustomCell")
                     }
+                    
+
                     stepIndexDict[indexPath.row] = step
                     
                     cell = timelineCell
@@ -361,6 +353,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
 
         }
 
+        
         return cell
         
     }
@@ -373,6 +366,15 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         print("dates \(intDate)")
         return intDate + 1
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        let footerView = FooterCollectionReusableView()
+        
+        let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Footer", for: indexPath) as! FooterCollectionReusableView
+        
+        return footerView
+    }
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

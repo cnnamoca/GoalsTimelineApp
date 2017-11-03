@@ -30,6 +30,7 @@
 		E64960701FA94FEA0093A1E9 /* EditSteppingStone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E649606E1FA94FEA0093A1E9 /* EditSteppingStone.storyboard */; };
 		E64960731FA958B00093A1E9 /* SteppingStone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64960711FA958B00093A1E9 /* SteppingStone+CoreDataClass.swift */; };
 		E64960741FA958B00093A1E9 /* SteppingStone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64960721FA958B00093A1E9 /* SteppingStone+CoreDataProperties.swift */; };
+		E6E263781FABF264006E914A /* FooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E263771FABF264006E914A /* FooterCollectionReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		E649606E1FA94FEA0093A1E9 /* EditSteppingStone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditSteppingStone.storyboard; sourceTree = "<group>"; };
 		E64960711FA958B00093A1E9 /* SteppingStone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteppingStone+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E64960721FA958B00093A1E9 /* SteppingStone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteppingStone+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E6E263771FABF264006E914A /* FooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCollectionReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				0D57D9EA1FA7F4CE00D674EF /* NewTimelineStoryboard.storyboard */,
 				0DEFC0F21FA8151E00C3363B /* TimeLine.storyboard */,
 				E63576DB1FA80237006CABDA /* TimelineViewController.swift */,
+				E6E263771FABF264006E914A /* FooterCollectionReusableView.swift */,
 				E649606B1FA948000093A1E9 /* EmptyCollectionViewCell.swift */,
 				E64960671FA907B90093A1E9 /* AddSteppingStone.storyboard */,
 				E64960691FA907CE0093A1E9 /* AddSteppingStoneViewController.swift */,
@@ -205,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D57D9EC1FA7F4CE00D674EF /* NewTimelineViewController.swift in Sources */,
+				E6E263781FABF264006E914A /* FooterCollectionReusableView.swift in Sources */,
 				0D57D9EB1FA7F4CE00D674EF /* AllTimelinesViewController.swift in Sources */,
 				E63576E11FA80237006CABDA /* TimelineViewController.swift in Sources */,
 				E63576B91FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld in Sources */,
