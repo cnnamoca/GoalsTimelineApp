@@ -106,10 +106,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
 
-    
-    
-
-    
     // MARK: Prepare for segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -199,7 +195,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let deleteAction = UIAlertAction(title: "Delete Stepping Stone", style: .destructive) { (action) in
                 context.delete(self.tempStep!)
                 self.tempStep = nil
-                
                 self.collectionView.reloadData()
             }
             alert.addAction(deleteAction)
@@ -215,7 +210,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             else {return}
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        let _ : NSPersistentContainer = appDelegate.persistentContainer
         tempStep = nil
         
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {

@@ -80,6 +80,5 @@ class AllTimelinesViewController: UIViewController, NSFetchedResultsControllerDe
         let context : NSManagedObjectContext = persistentContainer.viewContext
         let request : NSFetchRequest = Timeline.fetchRequest()
         timelineArray = try! context.fetch(request)
-        print ("there are \(timelineArray.count) items in the array")
     }
 }
