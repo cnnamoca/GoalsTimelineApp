@@ -8,27 +8,17 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet weak var collectionView: UICollectionView!
     var timelineArray : Array<Timeline> = Array()
+    var steppingStoneArray : Array<SteppingStone> = Array()
     var timeline : Timeline = Timeline ()
-    var startSec : Int = Int ()
     var stepIndexDict : Dictionary <Int , SteppingStone> = [Int : SteppingStone]()
     var tempStep : SteppingStone? = nil
     var tempIndex : IndexPath? = nil
-    
     var todaysDate:NSDate = NSDate()
-    
-    var steppingStoneArray : Array<SteppingStone> = Array()
-    
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         createGestures()
-        
-        
     }
-    
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,68 +26,28 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: true)
         
-        startSec = Int((timeline.startDate?.timeIntervalSince(timeline.startDate! as Date))!)
-        
-        self.fetchSteppingStone()
-        self.fetchTimelineData()
-        
+        fetchCoreData()
         collectionView.reloadData()
-        self.updateTimelinetitle()
-        print("\(String(describing: timeline.steppingStones?.count)) stepping stones in timeline")
-        print("Showing timeline with title: \(String(describing: timeline.title)) ")
-        
+        updateTimelinetitle()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "toAddSteppingStone" {
-            let addSteppingStoneVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
-            addSteppingStoneVC.timelineObject = timeline
-        }
-        
-        if segue.identifier == "tapAddStep" {
-            let date = sender as! Date
-            let tapAddStepVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
-            tapAddStepVC.timelineObject = timeline
-            tapAddStepVC.initialDate = date
-        }
-        
-        if segue.identifier == "toEditSteppingStone" {
-            let editSteppingStoneVC: EditSteppingViewController = segue.destination as! EditSteppingViewController
-            
-            let steppingStone : SteppingStone = sender as! SteppingStone
-            editSteppingStoneVC.steppingStoneObject = steppingStone
-            editSteppingStoneVC.timelineObject = timeline
-        }
-        if segue.identifier == "toDetailView" {
-            let timelineDetailVC : TimelineDetailViewController = segue.destination as! TimelineDetailViewController
-            
-            timelineDetailVC.timelineObject = timeline
-            
-        }
-        
-    }
-    
-   
+
     
     // MARK: - Collection View Data Source
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         var steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
         steppingArray = steppingArray.sorted { $0.deadline?.compare($1.deadline! as Date) == .orderedAscending }
         
         var cell : UICollectionViewCell = UICollectionViewCell()
         let emptyCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
+        
         let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
         let formatter : DateFormatter = DateFormatter()
         formatter.dateFormat = "EEEE, MMM d, yyyy"
         let dateString : String = formatter.string(from: indexPathDate as Date)
         emptyCell.dateLabel.text = dateString
-        
-        
-        todaysDate = NSDate()
-        //        todaysDate = NSCalendar.current.date(byAdding: .day, value: 1, to: NSDate() as Date, wrappingComponents: false)! as NSDate
-        
         
         
         let todayString : String = formatter.string(from: todaysDate as Date)
@@ -107,7 +57,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         else {
             emptyCell.imageView.image = UIImage(named: "EmptyCell")
         }
-        
         cell = emptyCell
         
         
@@ -187,6 +136,38 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+    }
+    
+    // MARK: Prepare for segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toAddSteppingStone" {
+            let addSteppingStoneVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
+            addSteppingStoneVC.timelineObject = timeline
+        }
+        
+        if segue.identifier == "tapAddStep" {
+            let date = sender as! Date
+            let tapAddStepVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
+            tapAddStepVC.timelineObject = timeline
+            tapAddStepVC.initialDate = date
+        }
+        
+        if segue.identifier == "toEditSteppingStone" {
+            let editSteppingStoneVC: EditSteppingViewController = segue.destination as! EditSteppingViewController
+            
+            let steppingStone : SteppingStone = sender as! SteppingStone
+            editSteppingStoneVC.steppingStoneObject = steppingStone
+            editSteppingStoneVC.timelineObject = timeline
+        }
+        if segue.identifier == "toDetailView" {
+            let timelineDetailVC : TimelineDetailViewController = segue.destination as! TimelineDetailViewController
+            
+            timelineDetailVC.timelineObject = timeline
+            
+        }
         
     }
     
@@ -285,8 +266,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             
             appDelegate.saveContext()
             tempStep = nil
-            fetchTimelineData()
-            fetchSteppingStone()
+            fetchCoreData()
+
             collectionView.reloadData()
             
         }
@@ -340,8 +321,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     
                     appDelegate.saveContext()
                     
-                    self.fetchSteppingStone()
-                    self.fetchTimelineData()
+                    fetchCoreData()
+
                     
                     
                     // MARK : FIXES AND SUCH
@@ -391,22 +372,16 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         collectionView.addGestureRecognizer(editStepGesture)
     }
     
-    func fetchTimelineData() {
+    func fetchCoreData() {
         
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
         
         let context : NSManagedObjectContext = persistentContainer.viewContext
-        let request : NSFetchRequest = Timeline.fetchRequest()
-        timelineArray = try! context.fetch(request)
-    }
-    
-    func fetchSteppingStone() {
-        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
-        let context : NSManagedObjectContext = persistentContainer.viewContext
-        let request : NSFetchRequest = SteppingStone.fetchRequest()
-        steppingStoneArray = try! context.fetch(request)
+        let requestTimelines : NSFetchRequest = Timeline.fetchRequest()
+        timelineArray = try! context.fetch(requestTimelines)
+        let requestSteppingStones : NSFetchRequest = SteppingStone.fetchRequest()
+        steppingStoneArray = try! context.fetch(requestSteppingStones)
     }
     
     func updateTimelinetitle() {
