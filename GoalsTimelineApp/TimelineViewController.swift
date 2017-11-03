@@ -14,18 +14,18 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var tempStep : SteppingStone? = nil
     var tempIndex : IndexPath? = nil
     var todaysDate:NSDate = NSDate()
+    let dateFormatter : DateFormatter = DateFormatter()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createGestures()
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
         navigationController?.setNavigationBarHidden(true, animated: true)
-        
         fetchCoreData()
         collectionView.reloadData()
         updateTimelinetitle()
@@ -39,47 +39,30 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         
         var steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
         steppingArray = steppingArray.sorted { $0.deadline?.compare($1.deadline! as Date) == .orderedAscending }
-        
         var cell : UICollectionViewCell = UICollectionViewCell()
-        let emptyCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
-        
-        let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
-        let formatter : DateFormatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMM d, yyyy"
-        let dateString : String = formatter.string(from: indexPathDate as Date)
-        emptyCell.dateLabel.text = dateString
-        
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
         todaysDate = NSCalendar.current.date(byAdding: .day, value: 5, to: NSDate() as Date, wrappingComponents: false)! as NSDate
-        
-        let todayString : String = formatter.string(from: todaysDate as Date)
-        if dateString == todayString {
-            emptyCell.imageView.image = UIImage(named: "TodayEmptyCell")
-        }
-        else {
-            emptyCell.imageView.image = UIImage(named: "EmptyCell")
-        }
+        let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
+        let dateString : String = dateFormatter.string(from: indexPathDate as Date)
+        let todayString : String = dateFormatter.string(from: todaysDate as Date)
+
+
+        let emptyCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
+        emptyCell.dateLabel.text = dateString
+        selectBlankCellImage(dateString, todayString, emptyCell)
         cell = emptyCell
         
-
         if steppingArray.count > 0 {
-            
-            // TODO: - make vvv into function later
-            
             for step : SteppingStone in steppingArray{
-                
-                // TODO: -  vvv lazy comparison. Update to use NSCalendar later
-                let stepDateString : String = formatter.string(from: step.deadline! as Date)
-                
+    
+                let stepDateString : String = dateFormatter.string(from: step.deadline! as Date)
                 if stepDateString == dateString {
                     
-                    
                     let timelineCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
-                    let myString : String = formatter.string(from: step.deadline! as Date)
+                    let myString : String = dateFormatter.string(from: step.deadline! as Date)
                     timelineCell.dateLabel.text = "\(myString)"
                     timelineCell.titleLabel.text = step.title
-                    
                     selectStepStoneImage(dateString, todayString, step, timelineCell)
-                    
                     stepIndexDict[indexPath.row] = step
                     cell = timelineCell
                 }
@@ -154,7 +137,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     
     //MARK: GESTURE RECOGNIZERS methods
     
-    
     @objc
     func handleEditStepGesture(gesture: UITapGestureRecognizer) {
         guard
@@ -162,13 +144,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             else {return}
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
             let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
-            let formatter : DateFormatter = DateFormatter()
-            formatter.dateFormat = "dd-MM-yyyy"
-            let dateString : String = formatter.string(from: indexPathDate as Date)
+            let dateString : String = dateFormatter.string(from: indexPathDate as Date)
             
             let steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
             for step : SteppingStone in steppingArray{
-                let stepDateString : String = formatter.string(from: step.deadline! as Date)
+                let stepDateString : String = dateFormatter.string(from: step.deadline! as Date)
                 if stepDateString == dateString {
                     performSegue(withIdentifier: "toEditSteppingStone", sender: step)
                 }
@@ -259,8 +239,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        
-        
         switch (gesture.state){
         case UIGestureRecognizerState.began:
             guard
@@ -271,7 +249,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                 collectionView.cancelInteractiveMovement()
                 break
             }
-            
             tempStep = stepIndexDict[indexPath.row]!
             tempIndex = indexPath
             break
@@ -282,7 +259,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             if indexPath != nil {
             }
-            
             break
             
         case UIGestureRecognizerState.ended:
@@ -290,15 +266,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             if indexPath != nil{
                 let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
                 if tempStep != nil {
+                    
                     tempStep?.setValue(indexPathDate, forKey:"deadline" )
-                    
                     appDelegate.saveContext()
-                    
                     fetchCoreData()
-
-                    
-                    
-                    // MARK : FIXES AND SUCH
                     collectionView.endInteractiveMovement()
                     collectionView.reloadData()
                 }
@@ -307,14 +278,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                 
                 collectionView.cancelInteractiveMovement()
                 self.collectionView.scrollToItem(at: tempIndex!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
-                
             }
+            
             tempStep = nil
             collectionView.endInteractiveMovement()
             break
             
         default:
-            
             collectionView.cancelInteractiveMovement()
             break
         }
@@ -378,5 +348,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
+    fileprivate func selectBlankCellImage(_ dateString: String, _ todayString: String, _ emptyCell: EmptyCollectionViewCell) {
+        if dateString == todayString {
+            emptyCell.imageView.image = UIImage(named: "TodayEmptyCell")
+        }
+        else {
+            emptyCell.imageView.image = UIImage(named: "EmptyCell")
+        }
+    }
     
 }
