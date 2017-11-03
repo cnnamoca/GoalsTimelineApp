@@ -18,10 +18,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var startSec : Int = Int ()
     var stepIndexDict : Dictionary <Int , SteppingStone> = [Int : SteppingStone]()
     var tempStep : SteppingStone? = nil
+    var tempIP : IndexPath? = nil
     
     var todaysDate:NSDate = NSDate()
-
-
+    
+    
     
     var steppingStoneArray : Array<SteppingStone> = Array()
     
@@ -43,7 +44,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let deleteGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleDeleteGesture(gesture:)))
         deleteGesture.direction = UISwipeGestureRecognizerDirection.left
         collectionView.addGestureRecognizer(deleteGesture)
-
+        
         
         let addStepGesture = UITapGestureRecognizer(target: self, action: #selector(handleAddStepGesture(gesture:)))
         addStepGesture.numberOfTapsRequired = 2
@@ -53,7 +54,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         collectionView.addGestureRecognizer(editStepGesture)
         
         
-
+        
     }
     
     
@@ -64,10 +65,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         //Hide navigation bar 
         navigationController?.setNavigationBarHidden(true, animated: true)
         
-
-
+        
+        
         startSec = Int((timeline.startDate?.timeIntervalSince(timeline.startDate! as Date))!)
-
+        
         self.fetchSteppingStone()
         self.fetchTimelineData()
         
@@ -81,8 +82,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toAddSteppingStone" {
-        let addSteppingStoneVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
-        addSteppingStoneVC.timelineObject = timeline
+            let addSteppingStoneVC : AddSteppingStoneViewController = segue.destination as! AddSteppingStoneViewController
+            addSteppingStoneVC.timelineObject = timeline
         }
         
         if segue.identifier == "tapAddStep" {
@@ -101,11 +102,11 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         if segue.identifier == "toDetailView" {
             let timelineDetailVC : TimelineDetailViewController = segue.destination as! TimelineDetailViewController
-
+            
             timelineDetailVC.timelineObject = timeline
             
         }
-
+        
     }
     
     //MARK: GESTURE RECOGNIZERS methods
@@ -131,7 +132,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             }
         }
     }
-            
+    
     
     @objc
     func handleAddStepGesture(gesture: UITapGestureRecognizer) {
@@ -159,7 +160,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
             
             let alert = UIAlertController(title: "This Stepping Stone will be deleted from Timeline", message: nil, preferredStyle: .alert)
-
+            
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
                 self.dismiss(animated: true, completion: nil)
             }
@@ -168,7 +169,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let deleteAction = UIAlertAction(title: "Delete Stepping Stone", style: .destructive) { (action) in
                 context.delete(self.tempStep!)
                 self.tempStep = nil
-                                
+                
                 self.collectionView.reloadData()
             }
             alert.addAction(deleteAction)
@@ -188,7 +189,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
         tempStep = nil
-
+        
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
             let cell : TimelineCollectionViewCell = (self.collectionView.cellForItem(at: indexPath) as? TimelineCollectionViewCell)!
             tempStep = stepIndexDict[indexPath.row]!
@@ -196,7 +197,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             if tempStep!.isCompleted == false {
                 cell.imageView.image = UIImage(named: "completedCell")
                 tempStep!.setValue(true, forKey: "isCompleted")
-
+                
             }
             else {
                 cell.imageView.image = UIImage(named: "CustomCell")
@@ -215,16 +216,18 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     @objc
     func handleLongGesture(gesture: UILongPressGestureRecognizer){
         
+        
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
         
-//        var tempStep : SteppingStone = SteppingStone ()//(context: persistentContainer.viewContext)
+        //        var tempStep : SteppingStone = SteppingStone ()//(context: persistentContainer.viewContext)
         
         switch (gesture.state){
         case UIGestureRecognizerState.began:
             guard
                 let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
                 else { break }
+            print("IIIIINNNNNNDDDDDEEEXXXXPPPPPAAAATTTTTHHHHHH: \(indexPath)")
             
             if self.collectionView.cellForItem(at: indexPath) is EmptyCollectionViewCell{
                 collectionView.cancelInteractiveMovement()
@@ -234,6 +237,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let began = collectionView.beginInteractiveMovementForItem(at: indexPath)
             print("began \(indexPath): \(began)")
             tempStep = stepIndexDict[indexPath.row]!
+            tempIP = indexPath
             break
             
         case UIGestureRecognizerState.changed:
@@ -252,8 +256,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             
         case UIGestureRecognizerState.ended:
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
-            if indexPath != nil{
-                let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
+            if let indexPath = indexPath {
+                let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath.row) * 86400)), since:timeline.startDate! as Date ) as NSDate
                 
                 if tempStep != nil {
                     tempStep?.setValue(indexPathDate, forKey:"deadline" )
@@ -266,13 +270,30 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     //update cell name
                     //update cell below/above as well
                     collectionView.reloadData()
+                   // collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredVertically, animated: true);
+                   
                 }
-            }
-            tempStep = nil
-            collectionView.reloadData()
-            collectionView.endInteractiveMovement()
                 
-
+            } else {
+                
+                
+//                let filteredDictionary = stepIndexDict.filter({ (key, value) -> Bool in
+//                    return value == tempStep
+//                });
+//
+//                let key = filteredDictionary.keys.first
+//                let ip = IndexPath(row: key!, section: 0)
+                tempStep = nil
+                collectionView.reloadData()
+                
+                
+                collectionView.scrollToItem(at: tempIP!, at: UICollectionViewScrollPosition.centeredVertically, animated: true);
+           // tempIP = nil
+            }
+            
+            collectionView.endInteractiveMovement()
+            
+            
             break
             
         default:
@@ -297,12 +318,12 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         emptyCell.dateLabel.text = dateString
         print("empty\(dateString)")
         
-//        todaysDate = NSDate()
+        //        todaysDate = NSDate()
         //USE FOR DEMO
         todaysDate = NSCalendar.current.date(byAdding: .day, value: 1, to: NSDate() as Date, wrappingComponents: false)! as NSDate
         //
         
-
+        
         let todayString : String = formatter.string(from: todaysDate as Date)
         if dateString == todayString {
             emptyCell.imageView.image = UIImage(named: "TodayEmptyCell")
@@ -310,13 +331,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         else {
             emptyCell.imageView.image = UIImage(named: "EmptyCell")
         }
-
+        
         cell = emptyCell
-
-
+        
+        
         
         print("\(steppingArray.count)")
-
+        
         if steppingArray.count > 0 {
             
             // make vvv into function later
@@ -326,8 +347,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                 let stepDateString : String = formatter.string(from: step.deadline! as Date)
                 print("occupied " + stepDateString)
                 if stepDateString == dateString {
-//                    print("occupied\(step.deadline!)")
-
+                    //                    print("occupied\(step.deadline!)")
+                    
                     let timelineCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
                     let myString : String = formatter.string(from: step.deadline! as Date)
                     timelineCell.dateLabel.text = "\(myString)"
@@ -348,33 +369,34 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     else if dateString != todayString && step.isCompleted == false {
                         timelineCell.imageView.image = UIImage(named: "CustomCell")
                     }
-
                     
-
+                    
+                    
                     stepIndexDict[indexPath.row] = step
                     
                     cell = timelineCell
                 }
             }
-
+            
         }
-
+        
         
         return cell
         
     }
-        
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         let dateDifference : TimeInterval = (timeline.endDate?.timeIntervalSince(timeline.startDate! as Date))!
         let intDate = Int(dateDifference)/86400
         print("dates \(intDate)")
+//        stepIndexDict = Dictionary()
         return intDate
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        let footerView = FooterCollectionReusableView()
+        //        let footerView = FooterCollectionReusableView()
         
         let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "Footer", for: indexPath) as! FooterCollectionReusableView
         
@@ -423,12 +445,12 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let request : NSFetchRequest = SteppingStone.fetchRequest()
         steppingStoneArray = try! context.fetch(request)
         print ("there are \(steppingStoneArray.count) steppingStones in the array")
-
+        
     }
     
     func updateTimelinetitle() {
         self.timelineTitleLabel.text = timeline.title
     }
-
+    
     
 }
