@@ -154,13 +154,26 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
         let context = persistentContainer.viewContext
         tempStep = stepIndexDict[indexPath.row]!
+        
+        
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
-            context.delete(tempStep!)
-            tempStep = nil
+            
+            let alert = UIAlertController(title: "This Stepping Stone will be deleted from Timeline", message: nil, preferredStyle: .alert)
 
-            self.fetchTimelineData()
-
-            collectionView.reloadData()
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(cancelAction)
+            
+            let deleteAction = UIAlertAction(title: "Delete Stepping Stone", style: .destructive) { (action) in
+                context.delete(self.tempStep!)
+                self.tempStep = nil
+                                
+                self.collectionView.reloadData()
+            }
+            alert.addAction(deleteAction)
+            
+            self.present(alert, animated: true, completion: nil)
             
         }
     }
