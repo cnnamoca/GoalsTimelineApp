@@ -4,7 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,7 +44,7 @@
                                                     <rect key="frame" x="10" y="-7" width="280" height="114"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hSi-cu-I9f">
-                                                    <rect key="frame" x="48" y="66" width="42" height="21"/>
+                                                    <rect key="frame" x="64" y="66" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="3ti-ra-KAk"/>
                                                     </constraints>
@@ -53,7 +53,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gn7-nA-dSE">
-                                                    <rect key="frame" x="42" y="0.0" width="254" height="58"/>
+                                                    <rect key="frame" x="58" y="20" width="222" height="38"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="30"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -79,7 +79,7 @@
                                             <outlet property="titleLabel" destination="gn7-nA-dSE" id="qg0-Rm-2cG"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emptyCell" id="1Se-uM-OgI" customClass="EmptyCollectionViewCell" customModule="GoalsTimelineApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emptyCell" id="1Se-uM-OgI" customClass="EmptyCollectionViewCell">
                                         <rect key="frame" x="37.5" y="100" width="300" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -105,8 +105,8 @@
                                             <constraint firstAttribute="trailing" secondItem="wVI-e4-ngL" secondAttribute="trailing" constant="258" id="yG3-pH-UHL"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="dateLabel" destination="N5e-Pw-Uru" id="Spz-lf-AOt"/>
-                                            <outlet property="imageView" destination="wVI-e4-ngL" id="Kaq-6b-fjd"/>
+                                            <outlet property="dateLabel" destination="N5e-Pw-Uru" id="b5G-nO-rCG"/>
+                                            <outlet property="imageView" destination="wVI-e4-ngL" id="E36-e4-WZR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
