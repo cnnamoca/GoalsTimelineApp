@@ -265,7 +265,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     
                     //update cell name
                     //update cell below/above as well
+//                    collectionView.reloadData()
+                    
+                    // MARK : FIXES AND SUCH
+                    self.collectionView.scrollToItem(at: indexPath!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
                     collectionView.reloadData()
+
+                    //
                 }
             }
             tempStep = nil
