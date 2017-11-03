@@ -253,10 +253,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             break
             
         case UIGestureRecognizerState.ended:
-            let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
+            var indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             if indexPath != nil{
                 let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
-                print("tempIndex :\(tempIndex) indexPath : \(indexPath) ")
                 if tempStep != nil {
                     tempStep?.setValue(indexPathDate, forKey:"deadline" )
                     
@@ -270,19 +269,28 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
 //                    collectionView.reloadData()
                     
                     // MARK : FIXES AND SUCH
-                    self.collectionView.scrollToItem(at: indexPath!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
+                    collectionView.endInteractiveMovement()
                     collectionView.reloadData()
+//                    self.collectionView.scrollToItem(at: indexPath!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
+
 
                     //
                 }
             }
-            else {
+            else if indexPath == nil {
+              
+
+//                collectionView.reloadData()
+                collectionView.cancelInteractiveMovement()
                 self.collectionView.scrollToItem(at: tempIndex!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
+
+                print("tempIndex :\(tempIndex) indexPath : \(indexPath) ")
             }
             tempStep = nil
-            collectionView.reloadData()
+//            collectionView.reloadData()
             collectionView.endInteractiveMovement()
-                
+            
+
 
             break
             
