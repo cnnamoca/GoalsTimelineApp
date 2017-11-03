@@ -102,25 +102,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         }
 
     }
-
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        //TODO: check if steppingstone is not empty
-//
-//        // lazy date comparison. update to NSCalendar
-//        let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
-//        let formatter : DateFormatter = DateFormatter()
-//        formatter.dateFormat = "dd-MM-yyyy"
-//        let dateString : String = formatter.string(from: indexPathDate as Date)
-//
-//        let steppingArray : Array<SteppingStone> = (timeline.steppingStones)?.allObjects as! Array<SteppingStone>
-//        for step : SteppingStone in steppingArray{
-//            let stepDateString : String = formatter.string(from: step.deadline! as Date)
-//            if stepDateString == dateString {
-//                performSegue(withIdentifier: "toEditSteppingStone", sender: step)
-//            }
-//        }
-//    }
     
     //MARK: GESTURE RECOGNIZERS methods
     
@@ -329,17 +310,20 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     timelineCell.dateLabel.text = "\(myString)"
                     timelineCell.titleLabel.text = step.title
                     
-                    if dateString == todayString {
-                        timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
+                    if dateString == todayString && step.isCompleted == true {
+                        timelineCell.imageView.image = UIImage(named: "TodayCompletedCell")
                     }
-                    
-                    // set
-                    if step.isCompleted == true {
+                    else if dateString != todayString && step.isCompleted == true {
                         timelineCell.imageView.image = UIImage(named: "completedCell")
                     }
-                    else {
+                    else if dateString == todayString && step.isCompleted == false {
+                        timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
+                    }
+                    else if dateString != todayString && step.isCompleted == false {
                         timelineCell.imageView.image = UIImage(named: "CustomCell")
                     }
+                    
+
                     stepIndexDict[indexPath.row] = step
                     
                     cell = timelineCell
@@ -348,6 +332,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
 
         }
 
+        
         return cell
         
     }
