@@ -13,7 +13,7 @@
         <!--Your Timelines-->
         <scene sceneID="eAt-4G-uy7">
             <objects>
-                <viewController id="ujb-46-qbg" customClass="AllTimelinesViewController" customModule="GoalsTimelineApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ujb-46-qbg" customClass="AllTimelinesViewController" customModule="PlanFam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YGQ-08-JeV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@
                             <constraint firstItem="ygi-h1-vEs" firstAttribute="centerX" secondItem="PhF-94-TZ6" secondAttribute="centerX" id="5sK-6x-yt1"/>
                             <constraint firstItem="pDy-uk-Kv5" firstAttribute="top" secondItem="ygi-h1-vEs" secondAttribute="bottom" constant="15" id="A4n-5s-KKO"/>
                             <constraint firstItem="PhF-94-TZ6" firstAttribute="bottom" secondItem="pDy-uk-Kv5" secondAttribute="bottom" constant="20" id="EOi-YH-H49"/>
-                            <constraint firstItem="PhF-94-TZ6" firstAttribute="trailing" secondItem="pDy-uk-Kv5" secondAttribute="trailing" constant="16" id="EUJ-2M-lvW"/>
+                            <constraint firstItem="PhF-94-TZ6" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pDy-uk-Kv5" secondAttribute="trailing" constant="16" id="EUJ-2M-lvW"/>
                             <constraint firstItem="ygi-h1-vEs" firstAttribute="top" secondItem="PhF-94-TZ6" secondAttribute="top" id="dl8-IP-v3c"/>
                             <constraint firstItem="pDy-uk-Kv5" firstAttribute="leading" secondItem="PhF-94-TZ6" secondAttribute="leading" constant="16" id="qZf-9J-kdx"/>
                         </constraints>
@@ -107,7 +107,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jCI-QA-CmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="422" y="-44"/>
+            <point key="canvasLocation" x="888" y="-44"/>
         </scene>
     </scenes>
 </document>
