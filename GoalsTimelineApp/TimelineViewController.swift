@@ -294,9 +294,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         emptyCell.dateLabel.text = dateString
         print("empty\(dateString)")
         
-        todaysDate = NSDate()
+//        todaysDate = NSDate()
         //USE FOR DEMO
-//        todaysDate = NSCalendar.current.date(byAdding: .day, value: 1, to: NSDate() as Date, wrappingComponents: false)! as NSDate
+        todaysDate = NSCalendar.current.date(byAdding: .day, value: 1, to: NSDate() as Date, wrappingComponents: false)! as NSDate
         //
         
 
@@ -364,7 +364,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let dateDifference : TimeInterval = (timeline.endDate?.timeIntervalSince(timeline.startDate! as Date))!
         let intDate = Int(dateDifference)/86400
         print("dates \(intDate)")
-        return intDate + 1
+        return intDate
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

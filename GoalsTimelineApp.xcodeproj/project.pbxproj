@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0CCB841FAC012F00BC84E6 /* EmptyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0CCB821FAC012E00BC84E6 /* EmptyCollectionViewCell.m */; };
 		0D57D9EB1FA7F4CE00D674EF /* AllTimelinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57D9E81FA7F4CD00D674EF /* AllTimelinesViewController.swift */; };
 		0D57D9EC1FA7F4CE00D674EF /* NewTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D57D9E91FA7F4CD00D674EF /* NewTimelineViewController.swift */; };
 		0D57D9ED1FA7F4CE00D674EF /* NewTimelineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D57D9EA1FA7F4CE00D674EF /* NewTimelineStoryboard.storyboard */; };
@@ -25,7 +26,6 @@
 		E63576E11FA80237006CABDA /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63576DB1FA80237006CABDA /* TimelineViewController.swift */; };
 		E64960681FA907B90093A1E9 /* AddSteppingStone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E64960671FA907B90093A1E9 /* AddSteppingStone.storyboard */; };
 		E649606A1FA907CE0093A1E9 /* AddSteppingStoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64960691FA907CE0093A1E9 /* AddSteppingStoneViewController.swift */; };
-		E649606C1FA948000093A1E9 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E649606B1FA948000093A1E9 /* EmptyCollectionViewCell.swift */; };
 		E649606F1FA94FEA0093A1E9 /* EditSteppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E649606D1FA94FEA0093A1E9 /* EditSteppingViewController.swift */; };
 		E64960701FA94FEA0093A1E9 /* EditSteppingStone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E649606E1FA94FEA0093A1E9 /* EditSteppingStone.storyboard */; };
 		E64960731FA958B00093A1E9 /* SteppingStone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64960711FA958B00093A1E9 /* SteppingStone+CoreDataClass.swift */; };
@@ -34,6 +34,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D0CCB801FAC012C00BC84E6 /* GoalsTimelineApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoalsTimelineApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		0D0CCB811FAC012D00BC84E6 /* EmptyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyCollectionViewCell.h; sourceTree = "<group>"; };
+		0D0CCB821FAC012E00BC84E6 /* EmptyCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyCollectionViewCell.m; sourceTree = "<group>"; };
+		0D0CCB861FAC04E900BC84E6 /* Contents.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		0D0CCB871FAC04E900BC84E6 /* Icon-App-20x20@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@1x.png"; sourceTree = "<group>"; };
+		0D0CCB881FAC04E900BC84E6 /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
+		0D0CCB891FAC04E900BC84E6 /* Icon-App-20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-20x20@3x.png"; sourceTree = "<group>"; };
+		0D0CCB8A1FAC04E900BC84E6 /* Icon-App-29x29@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@1x.png"; sourceTree = "<group>"; };
+		0D0CCB8B1FAC04E900BC84E6 /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
+		0D0CCB8C1FAC04E900BC84E6 /* Icon-App-29x29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@3x.png"; sourceTree = "<group>"; };
+		0D0CCB8D1FAC04E900BC84E6 /* Icon-App-40x40@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@1x.png"; sourceTree = "<group>"; };
+		0D0CCB8E1FAC04E900BC84E6 /* Icon-App-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@2x.png"; sourceTree = "<group>"; };
+		0D0CCB8F1FAC04E900BC84E6 /* Icon-App-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@3x.png"; sourceTree = "<group>"; };
+		0D0CCB901FAC04E900BC84E6 /* Icon-App-57x57@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-57x57@1x.png"; sourceTree = "<group>"; };
+		0D0CCB911FAC04E900BC84E6 /* Icon-App-57x57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-57x57@2x.png"; sourceTree = "<group>"; };
+		0D0CCB921FAC04E900BC84E6 /* Icon-App-60x60@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@1x.png"; sourceTree = "<group>"; };
+		0D0CCB931FAC04E900BC84E6 /* Icon-App-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@2x.png"; sourceTree = "<group>"; };
+		0D0CCB941FAC04E900BC84E6 /* Icon-App-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-60x60@3x.png"; sourceTree = "<group>"; };
+		0D0CCB951FAC04E900BC84E6 /* Icon-App-72x72@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-72x72@1x.png"; sourceTree = "<group>"; };
+		0D0CCB961FAC04E900BC84E6 /* Icon-App-72x72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-72x72@2x.png"; sourceTree = "<group>"; };
+		0D0CCB971FAC04E900BC84E6 /* Icon-App-76x76@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@1x.png"; sourceTree = "<group>"; };
+		0D0CCB981FAC04E900BC84E6 /* Icon-App-76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@2x.png"; sourceTree = "<group>"; };
+		0D0CCB991FAC04E900BC84E6 /* Icon-App-76x76@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@3x.png"; sourceTree = "<group>"; };
+		0D0CCB9A1FAC04E900BC84E6 /* Icon-App-83.5x83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-83.5x83.5@2x.png"; sourceTree = "<group>"; };
+		0D0CCB9B1FAC04E900BC84E6 /* Icon-Small-50x50@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@1x.png"; sourceTree = "<group>"; };
+		0D0CCB9C1FAC04E900BC84E6 /* Icon-Small-50x50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50x50@2x.png"; sourceTree = "<group>"; };
+		0D0CCB9D1FAC04E900BC84E6 /* ItunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ItunesArtwork@2x.png"; sourceTree = "<group>"; };
 		0D57D9E81FA7F4CD00D674EF /* AllTimelinesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllTimelinesViewController.swift; sourceTree = "<group>"; };
 		0D57D9E91FA7F4CD00D674EF /* NewTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTimelineViewController.swift; sourceTree = "<group>"; };
 		0D57D9EA1FA7F4CE00D674EF /* NewTimelineStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewTimelineStoryboard.storyboard; sourceTree = "<group>"; };
@@ -54,7 +81,6 @@
 		E63576DB1FA80237006CABDA /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		E64960671FA907B90093A1E9 /* AddSteppingStone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSteppingStone.storyboard; sourceTree = "<group>"; };
 		E64960691FA907CE0093A1E9 /* AddSteppingStoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSteppingStoneViewController.swift; sourceTree = "<group>"; };
-		E649606B1FA948000093A1E9 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		E649606D1FA94FEA0093A1E9 /* EditSteppingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSteppingViewController.swift; sourceTree = "<group>"; };
 		E649606E1FA94FEA0093A1E9 /* EditSteppingStone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditSteppingStone.storyboard; sourceTree = "<group>"; };
 		E64960711FA958B00093A1E9 /* SteppingStone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SteppingStone+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -73,6 +99,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D0CCB851FAC04E900BC84E6 /* AppIcon.appiconset */ = {
+			isa = PBXGroup;
+			children = (
+				0D0CCB861FAC04E900BC84E6 /* Contents.json */,
+				0D0CCB871FAC04E900BC84E6 /* Icon-App-20x20@1x.png */,
+				0D0CCB881FAC04E900BC84E6 /* Icon-App-20x20@2x.png */,
+				0D0CCB891FAC04E900BC84E6 /* Icon-App-20x20@3x.png */,
+				0D0CCB8A1FAC04E900BC84E6 /* Icon-App-29x29@1x.png */,
+				0D0CCB8B1FAC04E900BC84E6 /* Icon-App-29x29@2x.png */,
+				0D0CCB8C1FAC04E900BC84E6 /* Icon-App-29x29@3x.png */,
+				0D0CCB8D1FAC04E900BC84E6 /* Icon-App-40x40@1x.png */,
+				0D0CCB8E1FAC04E900BC84E6 /* Icon-App-40x40@2x.png */,
+				0D0CCB8F1FAC04E900BC84E6 /* Icon-App-40x40@3x.png */,
+				0D0CCB901FAC04E900BC84E6 /* Icon-App-57x57@1x.png */,
+				0D0CCB911FAC04E900BC84E6 /* Icon-App-57x57@2x.png */,
+				0D0CCB921FAC04E900BC84E6 /* Icon-App-60x60@1x.png */,
+				0D0CCB931FAC04E900BC84E6 /* Icon-App-60x60@2x.png */,
+				0D0CCB941FAC04E900BC84E6 /* Icon-App-60x60@3x.png */,
+				0D0CCB951FAC04E900BC84E6 /* Icon-App-72x72@1x.png */,
+				0D0CCB961FAC04E900BC84E6 /* Icon-App-72x72@2x.png */,
+				0D0CCB971FAC04E900BC84E6 /* Icon-App-76x76@1x.png */,
+				0D0CCB981FAC04E900BC84E6 /* Icon-App-76x76@2x.png */,
+				0D0CCB991FAC04E900BC84E6 /* Icon-App-76x76@3x.png */,
+				0D0CCB9A1FAC04E900BC84E6 /* Icon-App-83.5x83.5@2x.png */,
+				0D0CCB9B1FAC04E900BC84E6 /* Icon-Small-50x50@1x.png */,
+				0D0CCB9C1FAC04E900BC84E6 /* Icon-Small-50x50@2x.png */,
+				0D0CCB9D1FAC04E900BC84E6 /* ItunesArtwork@2x.png */,
+			);
+			path = AppIcon.appiconset;
+			sourceTree = "<group>";
+		};
 		0DEFC0E41FA810BA00C3363B /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +158,8 @@
 		E63576AF1FA7C7EB006CABDA /* GoalsTimelineApp */ = {
 			isa = PBXGroup;
 			children = (
+				0D0CCB811FAC012D00BC84E6 /* EmptyCollectionViewCell.h */,
+				0D0CCB821FAC012E00BC84E6 /* EmptyCollectionViewCell.m */,
 				0D7F850B1FABCBF1002F5F82 /* TimelineDetailView.storyboard */,
 				0D7F850A1FABCBF1002F5F82 /* TimelineDetailViewController.swift */,
 				E649606E1FA94FEA0093A1E9 /* EditSteppingStone.storyboard */,
@@ -113,7 +172,6 @@
 				0DEFC0F21FA8151E00C3363B /* TimeLine.storyboard */,
 				E63576DB1FA80237006CABDA /* TimelineViewController.swift */,
 				E6E263771FABF264006E914A /* FooterCollectionReusableView.swift */,
-				E649606B1FA948000093A1E9 /* EmptyCollectionViewCell.swift */,
 				E64960671FA907B90093A1E9 /* AddSteppingStone.storyboard */,
 				E64960691FA907CE0093A1E9 /* AddSteppingStoneViewController.swift */,
 				0DEFC0ED1FA8135B00C3363B /* TimelineCollectionViewCell.swift */,
@@ -122,9 +180,11 @@
 				E63576B41FA7C7EB006CABDA /* Main.storyboard */,
 				0D57D9E81FA7F4CD00D674EF /* AllTimelinesViewController.swift */,
 				E63576BA1FA7C7EB006CABDA /* Assets.xcassets */,
+				0D0CCB851FAC04E900BC84E6 /* AppIcon.appiconset */,
 				E63576BC1FA7C7EB006CABDA /* LaunchScreen.storyboard */,
 				E63576BF1FA7C7EB006CABDA /* Info.plist */,
 				E63576B71FA7C7EB006CABDA /* GoalsTimelineApp.xcdatamodeld */,
+				0D0CCB801FAC012C00BC84E6 /* GoalsTimelineApp-Bridging-Header.h */,
 			);
 			path = GoalsTimelineApp;
 			sourceTree = "<group>";
@@ -161,6 +221,7 @@
 				TargetAttributes = {
 					E63576AC1FA7C7EB006CABDA = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -218,9 +279,9 @@
 				E64960741FA958B00093A1E9 /* SteppingStone+CoreDataProperties.swift in Sources */,
 				0D7F850C1FABCBF2002F5F82 /* TimelineDetailViewController.swift in Sources */,
 				E649606F1FA94FEA0093A1E9 /* EditSteppingViewController.swift in Sources */,
+				0D0CCB841FAC012F00BC84E6 /* EmptyCollectionViewCell.m in Sources */,
 				E63576B11FA7C7EB006CABDA /* AppDelegate.swift in Sources */,
 				0DEFC0EE1FA8135B00C3363B /* TimelineCollectionViewCell.swift in Sources */,
-				E649606C1FA948000093A1E9 /* EmptyCollectionViewCell.swift in Sources */,
 				E649606A1FA907CE0093A1E9 /* AddSteppingStoneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,11 +419,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GoalsTimelineApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = carlonamoca.GoalsTimelineApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoalsTimelineApp/GoalsTimelineApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -372,11 +436,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GoalsTimelineApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = carlonamoca.GoalsTimelineApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GoalsTimelineApp/GoalsTimelineApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
