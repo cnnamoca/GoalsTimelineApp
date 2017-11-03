@@ -31,7 +31,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         updateTimelinetitle()
     }
     
-
+    
     
     // MARK: - Collection View Data Source
     
@@ -60,7 +60,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         cell = emptyCell
         
-
+        
         if steppingArray.count > 0 {
             
             // TODO: - make vvv into function later
@@ -90,7 +90,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         return cell
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         let dateDifference : TimeInterval = (timeline.endDate?.timeIntervalSince(timeline.startDate! as Date))!
@@ -114,11 +113,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
     }
-    
-
-    
-    
-
     
     // MARK: Prepare for segue
     
@@ -154,7 +148,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     
     //MARK: GESTURE RECOGNIZERS methods
     
-    
     @objc
     func handleEditStepGesture(gesture: UITapGestureRecognizer) {
         guard
@@ -175,7 +168,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             }
         }
     }
-    
     
     @objc
     func handleAddStepGesture(gesture: UITapGestureRecognizer) {
@@ -198,7 +190,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
         let context = persistentContainer.viewContext
         tempStep = stepIndexDict[indexPath.row]!
-        
         
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
             
@@ -228,7 +219,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             else {return}
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
         tempStep = nil
         
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
@@ -238,7 +228,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             if tempStep!.isCompleted == false {
                 cell.imageView.image = UIImage(named: "completedCell")
                 tempStep!.setValue(true, forKey: "isCompleted")
-                
             }
             else {
                 cell.imageView.image = UIImage(named: "CustomCell")
@@ -248,7 +237,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             appDelegate.saveContext()
             tempStep = nil
             fetchCoreData()
-
+            
             collectionView.reloadData()
             
         }
@@ -295,8 +284,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     appDelegate.saveContext()
                     
                     fetchCoreData()
-
-                    
                     
                     // MARK : FIXES AND SUCH
                     collectionView.endInteractiveMovement()
@@ -377,6 +364,4 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             timelineCell.imageView.image = UIImage(named: "CustomCell")
         }
     }
-    
-    
 }
