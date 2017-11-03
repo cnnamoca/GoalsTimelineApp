@@ -322,7 +322,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                 // vvv lazy comparison. Update to use NSCalendar later
                 let stepDateString : String = formatter.string(from: step.deadline! as Date)
                 print("occupied " + stepDateString)
-
                 if stepDateString == dateString {
 //                    print("occupied\(step.deadline!)")
 
@@ -340,9 +339,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     else if dateString == todayString && step.isCompleted == false {
                         timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
                     }
+                    else if ((todaysDate.timeIntervalSince1970) > (step.deadline?.timeIntervalSince1970)!) && step.isCompleted == false {
+                        timelineCell.imageView.image = UIImage(named: "UnfinishedCell")
+                    }
                     else if dateString != todayString && step.isCompleted == false {
                         timelineCell.imageView.image = UIImage(named: "CustomCell")
                     }
+
                     
 
                     stepIndexDict[indexPath.row] = step
