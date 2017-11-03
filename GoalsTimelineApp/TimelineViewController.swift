@@ -273,8 +273,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                 break
             }
             
-
-            
             tempStep = stepIndexDict[indexPath.row]!
             tempIndex = indexPath
             break
@@ -284,12 +282,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             if indexPath != nil {
-                let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date )
-                
-                
             }
-            // breaks if goes beyond
-            //need to fix
             
             break
             
