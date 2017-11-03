@@ -258,7 +258,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     func handleLongGesture(gesture: UILongPressGestureRecognizer){
         
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
         
         
         
