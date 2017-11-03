@@ -18,6 +18,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var startSec : Int = Int ()
     var stepIndexDict : Dictionary <Int , SteppingStone> = [Int : SteppingStone]()
     var tempStep : SteppingStone? = nil
+    var tempIndex : IndexPath? = nil
     
     var todaysDate:NSDate = NSDate()
 
@@ -232,18 +233,19 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             }
             
             let began = collectionView.beginInteractiveMovementForItem(at: indexPath)
-            print("began \(indexPath): \(began)")
+            
             tempStep = stepIndexDict[indexPath.row]!
+            tempIndex = indexPath
             break
             
         case UIGestureRecognizerState.changed:
-            print("changed")
+
             collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             if indexPath != nil {
                 let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date )
                 
-                print ("\(indexPathDate)")
+                
             }
             // breaks if goes beyond
             //need to fix
@@ -254,10 +256,10 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             if indexPath != nil{
                 let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
-                
+                print("tempIndex :\(tempIndex) indexPath : \(indexPath) ")
                 if tempStep != nil {
                     tempStep?.setValue(indexPathDate, forKey:"deadline" )
-                    print("ended")
+                    
                     appDelegate.saveContext()
                     
                     self.fetchSteppingStone()
@@ -274,6 +276,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     //
                 }
             }
+            else {
+                self.collectionView.scrollToItem(at: tempIndex!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
+            }
             tempStep = nil
             collectionView.reloadData()
             collectionView.endInteractiveMovement()
@@ -282,7 +287,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             break
             
         default:
-            print("default")
+            
             collectionView.cancelInteractiveMovement()
             break
         }
@@ -301,7 +306,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         formatter.dateFormat = "EEEE, MMM d, yyyy"
         let dateString : String = formatter.string(from: indexPathDate as Date)
         emptyCell.dateLabel.text = dateString
-        print("empty\(dateString)")
+        
         
 //        todaysDate = NSDate()
         //USE FOR DEMO
@@ -321,7 +326,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
 
 
         
-        print("\(steppingArray.count)")
+        
 
         if steppingArray.count > 0 {
             
@@ -330,9 +335,9 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                 
                 // vvv lazy comparison. Update to use NSCalendar later
                 let stepDateString : String = formatter.string(from: step.deadline! as Date)
-                print("occupied " + stepDateString)
+    
                 if stepDateString == dateString {
-//                    print("occupied\(step.deadline!)")
+
 
                     let timelineCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
                     let myString : String = formatter.string(from: step.deadline! as Date)
@@ -375,7 +380,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let dateDifference : TimeInterval = (timeline.endDate?.timeIntervalSince(timeline.startDate! as Date))!
         let intDate = Int(dateDifference)/86400
-        print("dates \(intDate)")
+        
         return intDate
     }
     
@@ -393,13 +398,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        print("can move")
+        
         return true
     }
     
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("move item \(sourceIndexPath) to \(destinationIndexPath)")
+        
         //update datasource
     }
     
@@ -418,7 +423,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let context : NSManagedObjectContext = persistentContainer.viewContext
         let request : NSFetchRequest = Timeline.fetchRequest()
         timelineArray = try! context.fetch(request)
-        print ("there are \(timelineArray.count) items in the array")
+        
         
     }
     
@@ -428,7 +433,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let context : NSManagedObjectContext = persistentContainer.viewContext
         let request : NSFetchRequest = SteppingStone.fetchRequest()
         steppingStoneArray = try! context.fetch(request)
-        print ("there are \(steppingStoneArray.count) steppingStones in the array")
+        
 
     }
     
