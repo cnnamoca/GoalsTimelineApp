@@ -69,7 +69,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         
         if steppingArray.count > 0 {
             for step : SteppingStone in steppingArray{
-    
+                cellImageManager.step = step
                 let stepDateString : String = dateFormatter.string(from: step.deadline! as Date)
                 if stepDateString == dateString {
                     
@@ -77,7 +77,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     let myString : String = dateFormatter.string(from: step.deadline! as Date)
                     timelineCell.dateLabel.text = "\(myString)"
                     timelineCell.titleLabel.text = step.title
-                    selectStepStoneImage(dateString, todayString, step, timelineCell)
+                    timelineCell.imageView.image = cellImageManager.selectStepStoneImage()
+//                    selectStepStoneImage(dateString, todayString, step, timelineCell)
                     stepIndexDict[indexPath.row] = step
                     cell = timelineCell
                 }
@@ -343,31 +344,31 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         self.timelineTitleLabel.text = timeline.title
     }
     
-    fileprivate func selectStepStoneImage(_ dateString: String, _ todayString: String, _ step: SteppingStone, _ timelineCell: TimelineCollectionViewCell) {
-        if dateString == todayString && step.isCompleted == true {
-            timelineCell.imageView.image = UIImage(named: "TodayCompletedCell")
-        }
-        else if dateString != todayString && step.isCompleted == true {
-            timelineCell.imageView.image = UIImage(named: "completedCell")
-        }
-        else if dateString == todayString && step.isCompleted == false {
-            timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
-        }
-        else if ((todaysDate.timeIntervalSince1970) > (step.deadline?.timeIntervalSince1970)!) && step.isCompleted == false {
-            timelineCell.imageView.image = UIImage(named: "UnfinishedCell")
-        }
-        else if dateString != todayString && step.isCompleted == false {
-            timelineCell.imageView.image = UIImage(named: "CustomCell")
-        }
-    }
-    
-    fileprivate func selectBlankCellImage(_ dateString: String, _ todayString: String, _ emptyCell: EmptyCollectionViewCell) {
-        if dateString == todayString {
-            emptyCell.imageView.image = UIImage(named: "TodayEmptyCell")
-        }
-        else {
-            emptyCell.imageView.image = UIImage(named: "EmptyCell")
-        }
-    }
+//    fileprivate func selectStepStoneImage(_ dateString: String, _ todayString: String, _ step: SteppingStone, _ timelineCell: TimelineCollectionViewCell) {
+//        if dateString == todayString && step.isCompleted == true {
+//            timelineCell.imageView.image = UIImage(named: "TodayCompletedCell")
+//        }
+//        else if dateString != todayString && step.isCompleted == true {
+//            timelineCell.imageView.image = UIImage(named: "completedCell")
+//        }
+//        else if dateString == todayString && step.isCompleted == false {
+//            timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
+//        }
+//        else if ((todaysDate.timeIntervalSince1970) > (step.deadline?.timeIntervalSince1970)!) && step.isCompleted == false {
+//            timelineCell.imageView.image = UIImage(named: "UnfinishedCell")
+//        }
+//        else if dateString != todayString && step.isCompleted == false {
+//            timelineCell.imageView.image = UIImage(named: "CustomCell")
+//        }
+//    }
+//    
+//    fileprivate func selectBlankCellImage(_ dateString: String, _ todayString: String, _ emptyCell: EmptyCollectionViewCell) {
+//        if dateString == todayString {
+//            emptyCell.imageView.image = UIImage(named: "TodayEmptyCell")
+//        }
+//        else {
+//            emptyCell.imageView.image = UIImage(named: "EmptyCell")
+//        }
+//    }
     
 }
