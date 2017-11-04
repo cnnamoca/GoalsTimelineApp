@@ -15,6 +15,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var tempIndex : IndexPath? = nil
     var todaysDate:NSDate = NSDate()
     let dateFormatter : DateFormatter = DateFormatter()
+    
 
     @IBAction func homeButton(_ sender: Any) {
     }
@@ -52,11 +53,18 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
         let dateString : String = dateFormatter.string(from: indexPathDate as Date)
         let todayString : String = dateFormatter.string(from: todaysDate as Date)
-
+        
+        
+        let cellImageManager : CellImageManager = CellImageManager(dateString: dateString, todayString: todayString)
+        
 
         let emptyCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
         emptyCell.dateLabel.text = dateString
-        selectBlankCellImage(dateString, todayString, emptyCell)
+        emptyCell.imageView.image = cellImageManager.selectBlankCellImage()
+//        selectBlankCellImage(dateString, todayString, emptyCell)
+        
+
+        
         cell = emptyCell
         
         if steppingArray.count > 0 {
