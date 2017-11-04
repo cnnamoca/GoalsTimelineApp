@@ -61,7 +61,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let emptyCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
         emptyCell.dateLabel.text = dateString
         emptyCell.imageView.image = cellImageManager.selectBlankCellImage()
-//        selectBlankCellImage(dateString, todayString, emptyCell)
+
         
 
         
@@ -73,14 +73,14 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                 let stepDateString : String = dateFormatter.string(from: step.deadline! as Date)
                 if stepDateString == dateString {
                     
-                    let timelineCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
+                    let stepStoneCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
                     let myString : String = dateFormatter.string(from: step.deadline! as Date)
-                    timelineCell.dateLabel.text = "\(myString)"
-                    timelineCell.titleLabel.text = step.title
-                    timelineCell.imageView.image = cellImageManager.selectStepStoneImage()
-//                    selectStepStoneImage(dateString, todayString, step, timelineCell)
+                    stepStoneCell.dateLabel.text = "\(myString)"
+                    stepStoneCell.titleLabel.text = step.title
+                    stepStoneCell.imageView.image = cellImageManager.selectStepStoneImage()
+
                     stepIndexDict[indexPath.row] = step
-                    cell = timelineCell
+                    cell = stepStoneCell
                 }
             }
         }
