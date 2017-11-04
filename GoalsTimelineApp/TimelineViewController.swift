@@ -264,7 +264,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             tempIndex = indexPath
             
             collectionView.beginInteractiveMovementForItem(at: indexPath)
-            
+
             break
             
         case UIGestureRecognizerState.changed:
@@ -273,15 +273,13 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             if indexPath != nil {
             }
+        
+
             break
             
         case UIGestureRecognizerState.ended:
             var indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             
-//            let filteredDictionary = stepIndexDict.filter({ (key, value) -> Bool in
-//                return value == tempStep
-//            });
-//            let key = filteredDictionary.keys.first
             
             if indexPath != nil{
                 let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
@@ -295,14 +293,12 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
                     }
                     else {
                         collectionView.cancelInteractiveMovement()
-                        self.collectionView.scrollToItem(at: tempIndex!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
                     }
 
                 }
             }
             else if indexPath == nil {
                 collectionView.cancelInteractiveMovement()
-                self.collectionView.scrollToItem(at: tempIndex!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
             }
             
             tempStep = nil
