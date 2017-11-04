@@ -277,24 +277,36 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             
         case UIGestureRecognizerState.ended:
             var indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
+            
+//            let filteredDictionary = stepIndexDict.filter({ (key, value) -> Bool in
+//                return value == tempStep
+//            });
+//            let key = filteredDictionary.keys.first
+            
             if indexPath != nil{
                 let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
-                if tempStep != nil {
-                    
-                    tempStep?.setValue(indexPathDate, forKey:"deadline" )
-                    appDelegate.saveContext()
-                    fetchCoreData()
-                    collectionView.endInteractiveMovement()
-                    collectionView.reloadData()
+                if let tempStep = tempStep {
+                    if self.collectionView.cellForItem(at: indexPath!) is EmptyCollectionViewCell {
+                        tempStep.setValue(indexPathDate, forKey:"deadline" )
+                        appDelegate.saveContext()
+                        fetchCoreData()
+                        collectionView.endInteractiveMovement()
+                        collectionView.reloadData()
+                    }
+                    else {
+                        collectionView.cancelInteractiveMovement()
+                        self.collectionView.scrollToItem(at: tempIndex!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
+                    }
+
                 }
             }
             else if indexPath == nil {
-                
                 collectionView.cancelInteractiveMovement()
                 self.collectionView.scrollToItem(at: tempIndex!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
             }
             
             tempStep = nil
+            tempIndex = nil
             collectionView.endInteractiveMovement()
             break
             
