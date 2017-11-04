@@ -278,15 +278,15 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         case UIGestureRecognizerState.ended:
             var indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             
-            let keys = (stepIndexDict as NSDictionary).allKeys(for: step) as! [Int]
-            
-
- 
+//            let filteredDictionary = stepIndexDict.filter({ (key, value) -> Bool in
+//                return value == tempStep
+//            });
+//            let key = filteredDictionary.keys.first
             
             if indexPath != nil{
                 let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
-                if tempStep != nil {
-                    tempStep?.setValue(indexPathDate, forKey:"deadline" )
+                if let tempStep = tempStep {
+                    tempStep.setValue(indexPathDate, forKey:"deadline" )
                     appDelegate.saveContext()
                     fetchCoreData()
                     collectionView.endInteractiveMovement()
