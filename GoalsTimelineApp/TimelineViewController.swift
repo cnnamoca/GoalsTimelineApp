@@ -15,6 +15,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     var tempIndex : IndexPath? = nil
     var todaysDate:NSDate = NSDate()
     let dateFormatter : DateFormatter = DateFormatter()
+    
 
     @IBAction func homeButton(_ sender: Any) {
     }
@@ -52,26 +53,34 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
         let dateString : String = dateFormatter.string(from: indexPathDate as Date)
         let todayString : String = dateFormatter.string(from: todaysDate as Date)
-
+        
+        
+        let cellImageManager : CellImageManager = CellImageManager(dateString: dateString, todayString: todayString)
+        
 
         let emptyCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "emptyCell", for: indexPath) as! EmptyCollectionViewCell
         emptyCell.dateLabel.text = dateString
-        selectBlankCellImage(dateString, todayString, emptyCell)
+        emptyCell.imageView.image = cellImageManager.selectBlankCellImage()
+
+        
+
+        
         cell = emptyCell
         
         if steppingArray.count > 0 {
             for step : SteppingStone in steppingArray{
-    
+                cellImageManager.step = step
                 let stepDateString : String = dateFormatter.string(from: step.deadline! as Date)
                 if stepDateString == dateString {
                     
-                    let timelineCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
+                    let stepStoneCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "timelineCell", for: indexPath) as! TimelineCollectionViewCell
                     let myString : String = dateFormatter.string(from: step.deadline! as Date)
-                    timelineCell.dateLabel.text = "\(myString)"
-                    timelineCell.titleLabel.text = step.title
-                    selectStepStoneImage(dateString, todayString, step, timelineCell)
+                    stepStoneCell.dateLabel.text = "\(myString)"
+                    stepStoneCell.titleLabel.text = step.title
+                    stepStoneCell.imageView.image = cellImageManager.selectStepStoneImage()
+
                     stepIndexDict[indexPath.row] = step
-                    cell = timelineCell
+                    cell = stepStoneCell
                 }
             }
         }
@@ -106,10 +115,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
 
-    
-    
-
-    
     // MARK: Prepare for segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -199,7 +204,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let deleteAction = UIAlertAction(title: "Delete Stepping Stone", style: .destructive) { (action) in
                 context.delete(self.tempStep!)
                 self.tempStep = nil
-                
                 self.collectionView.reloadData()
             }
             alert.addAction(deleteAction)
@@ -215,7 +219,7 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             let indexPath = self.collectionView.indexPathForItem(at: gesture.location(in: self.collectionView))
             else {return}
         let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let persistentContainer : NSPersistentContainer = appDelegate.persistentContainer
+        let _ : NSPersistentContainer = appDelegate.persistentContainer
         tempStep = nil
         
         if collectionView.cellForItem(at: indexPath) is TimelineCollectionViewCell {
@@ -340,31 +344,31 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         self.timelineTitleLabel.text = timeline.title
     }
     
-    fileprivate func selectStepStoneImage(_ dateString: String, _ todayString: String, _ step: SteppingStone, _ timelineCell: TimelineCollectionViewCell) {
-        if dateString == todayString && step.isCompleted == true {
-            timelineCell.imageView.image = UIImage(named: "TodayCompletedCell")
-        }
-        else if dateString != todayString && step.isCompleted == true {
-            timelineCell.imageView.image = UIImage(named: "completedCell")
-        }
-        else if dateString == todayString && step.isCompleted == false {
-            timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
-        }
-        else if ((todaysDate.timeIntervalSince1970) > (step.deadline?.timeIntervalSince1970)!) && step.isCompleted == false {
-            timelineCell.imageView.image = UIImage(named: "UnfinishedCell")
-        }
-        else if dateString != todayString && step.isCompleted == false {
-            timelineCell.imageView.image = UIImage(named: "CustomCell")
-        }
-    }
-    
-    fileprivate func selectBlankCellImage(_ dateString: String, _ todayString: String, _ emptyCell: EmptyCollectionViewCell) {
-        if dateString == todayString {
-            emptyCell.imageView.image = UIImage(named: "TodayEmptyCell")
-        }
-        else {
-            emptyCell.imageView.image = UIImage(named: "EmptyCell")
-        }
-    }
+//    fileprivate func selectStepStoneImage(_ dateString: String, _ todayString: String, _ step: SteppingStone, _ timelineCell: TimelineCollectionViewCell) {
+//        if dateString == todayString && step.isCompleted == true {
+//            timelineCell.imageView.image = UIImage(named: "TodayCompletedCell")
+//        }
+//        else if dateString != todayString && step.isCompleted == true {
+//            timelineCell.imageView.image = UIImage(named: "completedCell")
+//        }
+//        else if dateString == todayString && step.isCompleted == false {
+//            timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
+//        }
+//        else if ((todaysDate.timeIntervalSince1970) > (step.deadline?.timeIntervalSince1970)!) && step.isCompleted == false {
+//            timelineCell.imageView.image = UIImage(named: "UnfinishedCell")
+//        }
+//        else if dateString != todayString && step.isCompleted == false {
+//            timelineCell.imageView.image = UIImage(named: "CustomCell")
+//        }
+//    }
+//    
+//    fileprivate func selectBlankCellImage(_ dateString: String, _ todayString: String, _ emptyCell: EmptyCollectionViewCell) {
+//        if dateString == todayString {
+//            emptyCell.imageView.image = UIImage(named: "TodayEmptyCell")
+//        }
+//        else {
+//            emptyCell.imageView.image = UIImage(named: "EmptyCell")
+//        }
+//    }
     
 }
