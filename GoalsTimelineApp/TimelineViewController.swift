@@ -286,11 +286,18 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
             if indexPath != nil{
                 let indexPathDate = NSDate(timeInterval: (TimeInterval((indexPath?.row)! * 86400)), since:timeline.startDate! as Date ) as NSDate
                 if let tempStep = tempStep {
-                    tempStep.setValue(indexPathDate, forKey:"deadline" )
-                    appDelegate.saveContext()
-                    fetchCoreData()
-                    collectionView.endInteractiveMovement()
-                    collectionView.reloadData()
+                    if self.collectionView.cellForItem(at: indexPath!) is EmptyCollectionViewCell {
+                        tempStep.setValue(indexPathDate, forKey:"deadline" )
+                        appDelegate.saveContext()
+                        fetchCoreData()
+                        collectionView.endInteractiveMovement()
+                        collectionView.reloadData()
+                    }
+                    else {
+                        collectionView.cancelInteractiveMovement()
+                        self.collectionView.scrollToItem(at: tempIndex!, at: UICollectionViewScrollPosition.centeredVertically, animated: true)
+                    }
+
                 }
             }
             else if indexPath == nil {
