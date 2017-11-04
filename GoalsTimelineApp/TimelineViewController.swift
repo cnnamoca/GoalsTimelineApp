@@ -344,31 +344,6 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         self.timelineTitleLabel.text = timeline.title
     }
     
-//    fileprivate func selectStepStoneImage(_ dateString: String, _ todayString: String, _ step: SteppingStone, _ timelineCell: TimelineCollectionViewCell) {
-//        if dateString == todayString && step.isCompleted == true {
-//            timelineCell.imageView.image = UIImage(named: "TodayCompletedCell")
-//        }
-//        else if dateString != todayString && step.isCompleted == true {
-//            timelineCell.imageView.image = UIImage(named: "completedCell")
-//        }
-//        else if dateString == todayString && step.isCompleted == false {
-//            timelineCell.imageView.image = UIImage(named: "TodayCollectCell")
-//        }
-//        else if ((todaysDate.timeIntervalSince1970) > (step.deadline?.timeIntervalSince1970)!) && step.isCompleted == false {
-//            timelineCell.imageView.image = UIImage(named: "UnfinishedCell")
-//        }
-//        else if dateString != todayString && step.isCompleted == false {
-//            timelineCell.imageView.image = UIImage(named: "CustomCell")
-//        }
-//    }
-//    
-//    fileprivate func selectBlankCellImage(_ dateString: String, _ todayString: String, _ emptyCell: EmptyCollectionViewCell) {
-//        if dateString == todayString {
-//            emptyCell.imageView.image = UIImage(named: "TodayEmptyCell")
-//        }
-//        else {
-//            emptyCell.imageView.image = UIImage(named: "EmptyCell")
-//        }
-//    }
+
     
 }
