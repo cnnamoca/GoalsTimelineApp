@@ -14,7 +14,8 @@ class CellImageManager: NSObject {
     var dateString : String! = nil
     var todayString : String! = nil
     var step : SteppingStone! = nil
-    var todaysDate = NSCalendar.current.date(byAdding: .day, value: 5, to: NSDate() as Date, wrappingComponents: false)! as NSDate
+//    var todaysDate = NSCalendar.current.date(byAdding: .day, value: 5, to: NSDate() as Date, wrappingComponents: false)! as NSDate
+    var todaysDate = NSDate()
 
     
     init(dateString : String, todayString : String) {
@@ -24,6 +25,7 @@ class CellImageManager: NSObject {
     }
     
     func selectStepStoneImage() -> UIImage {
+        let todaysDate = NSDate()
         if dateString == todayString && step.isCompleted == true {
             image = UIImage(named: "TodayCompletedCell")
         }

@@ -49,7 +49,8 @@ class TimelineViewController: UIViewController, UICollectionViewDataSource, UICo
         steppingArray = steppingArray.sorted { $0.deadline?.compare($1.deadline! as Date) == .orderedAscending }
         var cell : UICollectionViewCell = UICollectionViewCell()
         dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
-        todaysDate = NSCalendar.current.date(byAdding: .day, value: 5, to: NSDate() as Date, wrappingComponents: false)! as NSDate
+//        todaysDate = NSCalendar.current.date(byAdding: .day, value: 5, to: NSDate() as Date, wrappingComponents: false)! as NSDate
+        todaysDate = NSDate()
         let indexPathDate = NSDate(timeInterval: (TimeInterval(indexPath.row * 86400)), since:timeline.startDate! as Date )
         let dateString : String = dateFormatter.string(from: indexPathDate as Date)
         let todayString : String = dateFormatter.string(from: todaysDate as Date)
