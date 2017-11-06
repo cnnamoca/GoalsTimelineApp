@@ -14,9 +14,8 @@ class TimelineDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.populateFieldsWithTimelineData()
-        
-
     }
+    
     @IBAction func cancelTimelineEditing(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -40,5 +39,4 @@ class TimelineDetailViewController: UIViewController {
         timelineStartDatePicker.date = timelineObject.startDate! as Date
         timelineEndDatePicker.date = timelineObject.endDate! as Date
     }
-    
 }

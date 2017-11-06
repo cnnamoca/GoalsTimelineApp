@@ -17,7 +17,6 @@ class NewTimelineViewController: UIViewController, UITextViewDelegate, UIGesture
     @IBOutlet weak var addNewTimelineButton: UIButton!
     var timelineObject : Timeline = Timeline ()
     
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

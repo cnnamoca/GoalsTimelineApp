@@ -10,16 +10,13 @@ class EditSteppingViewController: UIViewController {
     var timelineObject : Timeline = Timeline ()
 
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.populateFieldsWithExistindData()
-        print("completion state : \(steppingStoneObject.isCompleted)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupDatePicker()
-        
     }
     
     @IBAction func saveSteppingStoneChanges(_ sender: UIBarButtonItem) {
